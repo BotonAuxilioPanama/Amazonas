@@ -1,25 +1,9 @@
 *{
-	outline: 1px dotted red;
+	/*outline: 1px dotted red;*/
 }
-
-footer{
-	
-	
-}
-
-.central{
-	
-}
-
-header{
-
-	
-}
-
-
 
 body{
-	background-color: #a2bb8f;
+	background-color: #b7e1ff;
 }
 
 
@@ -45,5 +29,6 @@ body {
 /* Set the fixed height of the footer here */
 #footer {
   height: 60px;
+
   
 }

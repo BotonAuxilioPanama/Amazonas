@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Registro de Amazona </title>
+
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Login del Sistema">
+  <meta name="author" content="@jockrlos22">
+
+
+  <!-- Bootstrap -->
+  <link href="css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+  <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+      <![endif]-->
+    </head>
+    <body>
+      <div class="container">
+
+<!-- <div >
+  <h1>Example page header </h1>
+</div> -->
+
+        <header class="page-header">
+          <h1>Ingreso del Tiempo para Amazona<small> Para Competencia X</small></h1>
+        </header>
+
+
+      
+
+        <form class="form-horizontal" role="form">
+
+          <div class="form-group" >
+          <label for="amazona" class="col-lg-2 control-label">Amazona</label>
+          <div class="col-lg-10">
+          <select class="form-control" id="amazona">
+              <option>Ivette Sanjur</option>
+              <option>Lucia Canto</option>
+              <option>Maria Abrego</option>
+              <option>Ambar Ruiz</option>
+              <option>Melisa Delgado</option>
+              </select>
+          </div>
+        </div>
+
+
+          <div class="form-group">
+            <label for="Tiempo" class="col-lg-2 control-label">Tiempo</label>
+            <div class="col-lg-4">
+              <input type="time" class="form-control" id="tiempo"
+              placeholder="Tiempo" required>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="castigo" class="col-lg-2 control-label">Penalizacion</label>
+            <div class="col-lg-4">
+              <input type="number" min="0" max="10" class="form-control" id="castigo" 
+              placeholder="# de Obstaculos Derribados" required>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="fecha" class="col-lg-2 control-label">Fecha</label>
+            <div class="col-lg-10">
+              <input type="date" class="form-control" id="fecha" 
+              placeholder="Fecha" required>
+            </div>
+          </div>
+       
+         <div class="form-group">
+          <label for="modalidad" class="col-lg-2 control-label">Modalidad</label>
+          <div class="col-lg-10">
+          <select class="form-control" id="modalidad">
+              <option>Polos</option>
+              <option>Barriles</option>
+              </select>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <div class="col-lg-offset-2 col-lg-10">
+            <button type="submit" class="btn btn-primary">Guardar</button>
+          </div>
+        </div>
+
+      </form>
+      <footer>
+        
+        
+      </footer>
+    </div>
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://code.jquery.com/jquery.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="js/bootstrap.min.js"></script>
+  </body>
+  </html>

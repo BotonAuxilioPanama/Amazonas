@@ -7,6 +7,20 @@ body{
 }
 
 
+.justificar{
+	 -ms-word-break: break-all;
+  word-break: break-all;
+
+  /* Non standard for webkit */
+  word-break: break-word;
+
+  -webkit-hyphens: auto;
+  -moz-hyphens: auto;
+  hyphens: auto;
+	word-wrap:break-work;
+}
+
+
 /* Sticky footer styles
 -------------------------------------------------- */
 

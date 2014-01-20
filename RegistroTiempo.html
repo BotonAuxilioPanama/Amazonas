@@ -25,17 +25,14 @@
 
       <div id="wrap">
         <div class="container">
-
-        
-
-            <header class="page-header">
-              <h1 >Encuentro de Amazonas 2014 <br> <small>Para Competencia X</small></h1>
-              <h3 >Ingreso del Tiempo para Amazona</h3> 
-            </header>
+          <header class="page-header">
+            <h1 >Encuentro de Amazonas 2014 <br> <small>Para Competencia X</small></h1>
+            <h3 >Ingreso del Tiempo para Amazona</h3> 
+          </header>
 
 
           <section class="col-md-12 col-xs-12">
-          <form class="form-horizontal col-md-8 col-md-offset-3 col-xs-12" role="form">
+            <form class="form-horizontal col-md-8 col-md-offset-3 col-xs-12" role="form">
 
               <div class="form-group" >
                 <label for="amazona" class="col-md-2 control-label">Amazona</label>
@@ -53,7 +50,7 @@
               <div class="form-group">
                 <label for="Tiempo" class="col-md-2 control-label">Tiempo</label>
                 <div class="col-md-6">
-                  <input type="number" min="0" class="form-control" id="tiempo"
+                  <input type="number" min="0" step="any"class="form-control" id="tiempo"
                   placeholder="Tiempo" required>
                 </div>
               </div>
@@ -83,24 +80,46 @@
                   </select>
                 </div>
               </div>
+              
+              <div class="form-group">
+                <label for="recorrido" class="col-md-2 control-label"># de Recorrido</label>
+                <div class="col-md-6" id="recorrido">
+
+                <label class="radio-inline">
+                  <input type="radio" id="recorNun1" name="recor" value="1" required> 1
+                </label>
+                <label class="radio-inline">
+                  <input type="radio" id="recorNun2" name="recor" value="2" required> 2
+                </label>
+              </div>
+
+
+
+
+               <!--  <div class="col-md-6">
+                  <input type="number" min="1" max ="2" class="form-control" id="recorrido" 
+                  placeholder="# de Recorrido" required>
+                </div> -->
+              </div>
+
 
               <div class="form-group">
                 <div class="col-md-offset-2 col-md-6">
                   <button type="submit" class="btn btn-primary">
                    <span class=" glyphicon glyphicon-floppy-save"></span>
                    Guardar
-                   </button>
+                 </button>
 
 
-                </div>
-              </div>
+               </div>
+             </div>
 
-            </form>
-          </section>
-        </div>
-      </div>
+           </form>
+         </section>
+       </div>
+     </div>
 
-      <footer id="footer">
+     <footer id="footer">
        <div class="container">
          <p class="text-muted">Club de Amazonas de Verguas 2014</p>
        </div>

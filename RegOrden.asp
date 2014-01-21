@@ -1,5 +1,29 @@
 <!DOCTYPE html>
 <html lang = "es">
+<%
+'--------------------------------------------------------------------------
+'         Inclusión del Archivo de Base de Datos
+'--------------------------------------------------------------------------
+%>
+<!-- #include file = "db/conectar.asp"-->
+
+<%
+
+dim comp
+dim paginaTit
+comp = CInt(Request.QueryString("Comp"))
+
+
+Select Case comp
+Case 1
+paginaTit = "Nacional"
+Case 2
+paginaTit = "Internacional"
+Case Else
+paginaTit = "Desconocido"
+End Select
+
+%>
 <head>
   <title>Orden de Recorrido </title>
 
@@ -28,7 +52,7 @@
       <header class="page-header">
         <h1 >Encuentro de Amazonas 2014 <br> <small>Feria de Sona, Veraguas </small></h1>
         <h3 >Registrar Orden de Recorrido</h3> 
-        <h3 >Para Competencia X</h3>
+        <h3 >Para Competencia <%=paginaTit%></h3>
       </header>
       
 

@@ -1,5 +1,36 @@
 <!DOCTYPE html>
 <html lang = "es">
+<%
+'--------------------------------------------------------------------------
+'         Inclusión del Archivo de Base de Datos
+'--------------------------------------------------------------------------
+%>
+<!-- #include file = "db/conectar.asp"-->
+<%
+dim comp
+dim paginaTit
+comp = CInt(Request.QueryString("Comp"))
+
+
+Select Case comp
+Case 1
+paginaTit = "Nacional"
+Case 2
+paginaTit = "Internacional"
+Case Else
+paginaTit = "Desconocido"
+End Select
+
+set Con = Server.CreateObject("ADODB.CONNECTION")
+Con.Open = STRCONEXION
+
+Set RsModalidades = Server.CreateObject("ADODB.RECORDSET")
+RsModalidades.Source = "SELECT Modalidad.*FROM Modalidad;" 
+RsModalidades.Open, Con
+
+
+
+%>
 <head>
   <title>Registro de Amazona </title>
 
@@ -26,8 +57,9 @@
       <div id="wrap">
         <div class="container">
           <header class="page-header">
-            <h1 >Encuentro de Amazonas 2014 <br> <small>Para Competencia X</small></h1>
-            <h3 >Ingreso del Tiempo para Amazona</h3> 
+            <h1>Encuentro de Amazonas 2014 <br> <small>Feria de Sona, Veraguas </small></h1>
+            <h3>Ingreso del Tiempo para Amazona</h3> 
+            <h3>Para Competencia <%=paginaTit%></h3>
           </header>
 
 
@@ -67,11 +99,11 @@
                 <label for="fecha" class="col-md-2 control-label">Fecha</label>
                 <div class="col-md-6">
                   <input type="date" class="form-control" id="fecha" 
-                  placeholder="Fecha" required>
+                  placeholder="Fecha" required value="<%= Date() %>"><%= Date() %>
                 </div>
               </div>
 
-              <div class="form-group">
+             <!--  <div class="form-group">
                 <label for="modalidad" class="col-md-2 control-label">Modalidad</label>
                 <div class="col-md-6">
                   <select class="form-control" id="modalidad">
@@ -79,8 +111,29 @@
                     <option>Barriles</option>
                   </select>
                 </div>
-              </div>
-              
+              </div>-->
+               
+            <div class="form-group">
+                <label for="recorrido" class="col-md-2 control-label">Modalidad</label>
+                <div class="col-md-6" id="recorrido">
+                    
+                      <%
+                  if not RsModalidades.EOF then
+                  Do While not RsModalidades.EOF
+                  %>
+                     <label class="radio-inline">
+                  <input type="radio" id="mod<%=RsModalidades("idModalidad")%>" name="modalidad" value="<%=RsModalidades("idModalidad")%>" required> <%=RsModalidades("Nombre")%>  </label>
+                  <%
+                  RsModalidades.MoveNext
+                  Loop
+                  RsModalidades.Close
+                  Else%>
+                    <label class="radio-inline">
+                  <input type="radio" id="mod" name="modalidad" value="1" disabled="disabled" required> Debe Crear Modalidades  </label>
+                  <%End If%>
+                     </div>
+                 </div>
+                
               <div class="form-group">
                 <label for="recorrido" class="col-md-2 control-label"># de Recorrido</label>
                 <div class="col-md-6" id="recorrido">
@@ -95,8 +148,8 @@
 
 
 
-
-               <!--  <div class="col-md-6">
+                <!--
+                <div class="col-md-6">
                   <input type="number" min="1" max ="2" class="form-control" id="recorrido" 
                   placeholder="# de Recorrido" required>
                 </div> -->

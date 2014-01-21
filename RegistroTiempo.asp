@@ -88,9 +88,9 @@ RsModalidades.Source = "SELECT Modalidad.*FROM Modalidad;"
               </div>
 
               <div class="form-group">
-                <label for="castigo" class="col-md-2 control-label">Castigo</label>
+                <label for="faltas" class="col-md-2 control-label">Faltas</label>
                 <div class="col-md-6">
-                  <input type="number" min="0" max="10" class="form-control" id="castigo" 
+                  <input type="number" min="0" max="10" class="form-control" id="faltas" 
                   placeholder="# de Obstaculos Derribados" required>
                 </div>
               </div>

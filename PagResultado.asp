@@ -1,7 +1,28 @@
 <!DOCTYPE html>
 <html lang = "es">
+<%
+    
+dim res
+dim paginaTit
+
+res = CInt(Request.QueryString("res"))
+
+Select Case res
+Case 1
+paginaTit = "Operacion Exitosa"
+Case 2
+paginaTit = "Error"
+Case Else
+paginaTit = "Desconocido"
+End Select
+
+%>
+
+
+
+
 <head>
-  <title>Mensaje </title>
+  <title> <%=paginaTit%></title>
 
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -30,6 +51,10 @@
         <h3 >Resultado de la Operación</h3> 
       </header>
       
+
+
+          <%  if res = 2 then   %>
+
           <div class="jumbotron">
   <div class="container alert alert-danger">
     <h1><span class="glyphicon glyphicon-remove-circle"> </span>Error</h1>
@@ -37,7 +62,7 @@
     <p><a class="btn btn-primary btn-lg" role="button"><span class="glyphicon glyphicon-circle-arrow-left">  </span> Regresar</a></p>
   </div>
 </div>
-
+<% else  if res = 1 then %>
 
 
  <div class="jumbotron">
@@ -48,7 +73,8 @@
   </div>
 </div>
 
-
+<%end if 
+end if %>
 
 
 

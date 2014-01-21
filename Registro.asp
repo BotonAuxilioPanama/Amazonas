@@ -64,7 +64,7 @@ RsEquipos.Open, Con
 
          <section class="col-md-12">
           <br>
-          <form class="form-horizontal col-md-8 col-md-offset-2" role="form">
+          <form class="form-horizontal col-md-8 col-md-offset-2" role="form" action="GuardarAmazona.asp" method="post"   >
             <div class="form-group">
               <label for="nombre" class="col-lg-2 control-label">Nombre</label>
               <div class="col-lg-10">

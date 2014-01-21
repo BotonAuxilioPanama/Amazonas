@@ -6,9 +6,13 @@
 '--------------------------------------------------------------------------
 %>
 <!-- #include file = "db/conectar.asp"-->
+<!-- #include file = "asp/libreria.asp"-->
+
 <%
 dim comp
 dim paginaTit
+dim fechahoy
+fechahoy = Date()
 comp = CInt(Request.QueryString("Comp"))
 
 
@@ -26,9 +30,9 @@ Con.Open = STRCONEXION
 
 Set RsModalidades = Server.CreateObject("ADODB.RECORDSET")
 RsModalidades.Source = "SELECT Modalidad.*FROM Modalidad;" 
-RsModalidades.Open, Con
 
 
+ 
 
 %>
 <head>
@@ -69,12 +73,8 @@ RsModalidades.Open, Con
               <div class="form-group" >
                 <label for="amazona" class="col-md-2 control-label">Amazona</label>
                 <div class="col-md-6">
-                  <select class="form-control" id="amazona">
-                    <option>Ivette Sanjur</option>
-                    <option>Lucia Canto</option>
-                    <option>Maria Abrego</option>
-                    <option>Ambar Ruiz</option>
-                    <option>Melisa Delgado</option>
+                 <select class="form-control" id="amazona">
+                <%  ObtenerNombres(comp) %>
                   </select>
                 </div>
               </div>
@@ -99,7 +99,7 @@ RsModalidades.Open, Con
                 <label for="fecha" class="col-md-2 control-label">Fecha</label>
                 <div class="col-md-6">
                   <input type="date" class="form-control" id="fecha" 
-                  placeholder="Fecha" required value="<%= Date() %>"><%= Date() %>
+                  placeholder="Fecha" required value="<%= fechahoy %>">
                 </div>
               </div>
 
@@ -118,6 +118,7 @@ RsModalidades.Open, Con
                 <div class="col-md-6" id="recorrido">
                     
                       <%
+                          RsModalidades.Open, Con
                   if not RsModalidades.EOF then
                   Do While not RsModalidades.EOF
                   %>

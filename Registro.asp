@@ -102,7 +102,7 @@ RsEquipos.Open, Con
                   RsEquipos.MoveNext
                   Loop
                   RsEquipos.Close
-                  Else%>
+                   Else%>
                   <option value ="0">Debe Crear Equipos</option>
                   <%End If%>
                 </select>

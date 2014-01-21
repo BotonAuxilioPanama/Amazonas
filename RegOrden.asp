@@ -6,11 +6,14 @@
 '--------------------------------------------------------------------------
 %>
 <!-- #include file = "db/conectar.asp"-->
+<!-- #include file = "asp/libreria.asp"-->
 
 <%
 
 dim comp
 dim paginaTit
+dim cantidad
+ dim v 
 comp = CInt(Request.QueryString("Comp"))
 
 
@@ -22,6 +25,23 @@ paginaTit = "Internacional"
 Case Else
 paginaTit = "Desconocido"
 End Select
+
+set Con = Server.CreateObject("ADODB.CONNECTION")
+Con.Open = STRCONEXION
+
+Set RsCantidad = Server.CreateObject("ADODB.RECORDSET")
+RsCantidad.Source = "SELECT Count(Amazonas.idAmazona) AS Cantidad FROM (Competencia INNER JOIN Equipos ON Competencia.idCompetencia = Equipos.idCompetencia) INNER  JOIN Amazonas ON Equipos.idEquipo = Amazonas.idEquipo WHERE (((Competencia.idCompetencia)= "& comp &"));"
+
+RsCantidad.Open, Con
+
+
+ if not RsCantidad.EOF then
+ cantidad = RsCantidad("Cantidad")
+ RsCantidad.Close
+ else
+cantidad = 0
+end if
+ 
 
 %>
 <head>
@@ -59,244 +79,23 @@ End Select
        <section class="col-md-12">
         <form class="form-horizontal col-md-10 col-md-offset-2" role="form">
 
-         <div class="form-group" >
-                <label for="amazona1" class="col-md-2 control-label">#1</label>
+            
+            <% 
+           
+            for v = 1 to cantidad  Step 1   %>  
+            
+             <div class="form-group" >
+                <label for="amazona<%=v%>" class="col-md-2 control-label">#<%=v%></label>
                 <div class="col-md-6">
-                  <select class="form-control" id="amazona1">
-                    <option>Ivette Sanjur</option>
-                    <option>Lucia Canto</option>
-                    <option>Maria Abrego</option>
-                    <option>Ambar Ruiz</option>
-                    <option>Melisa Delgado</option>
+                  <select class="form-control" id="amazona<%=v%>">
+                   <%ObtenerNombres(comp)%>
                   </select>
                 </div>
               </div>
             
-         <div class="form-group" >
-                <label for="amazona2" class="col-md-2 control-label">#2</label>
-                <div class="col-md-6">
-                  <select class="form-control" id="amazona2">
-                    <option>Ivette Sanjur</option>
-                    <option>Lucia Canto</option>
-                    <option>Maria Abrego</option>
-                    <option>Ambar Ruiz</option>
-                    <option>Melisa Delgado</option>
-                  </select>
-                </div>
-              </div>
+            <% next %>
 
-               <div class="form-group" >
-                <label for="amazona3" class="col-md-2 control-label">#3</label>
-                <div class="col-md-6">
-                  <select class="form-control" id="amazona3">
-                    <option>Ivette Sanjur</option>
-                    <option>Lucia Canto</option>
-                    <option>Maria Abrego</option>
-                    <option>Ambar Ruiz</option>
-                    <option>Melisa Delgado</option>
-                  </select>
-                </div>
-              </div>
-
-
-               <div class="form-group" >
-                <label for="amazona4" class="col-md-2 control-label">#4</label>
-                <div class="col-md-6">
-                  <select class="form-control" id="amazona4">
-                    <option>Ivette Sanjur</option>
-                    <option>Lucia Canto</option>
-                    <option>Maria Abrego</option>
-                    <option>Ambar Ruiz</option>
-                    <option>Melisa Delgado</option>
-                  </select>
-                </div>
-
-              </div> <div class="form-group" >
-                <label for="amazona5" class="col-md-2 control-label">#5</label>
-                <div class="col-md-6">
-                  <select class="form-control" id="amazona5">
-                    <option>Ivette Sanjur</option>
-                    <option>Lucia Canto</option>
-                    <option>Maria Abrego</option>
-                    <option>Ambar Ruiz</option>
-                    <option>Melisa Delgado</option>
-                  </select>
-                </div>
-              </div>
-
-               <div class="form-group" >
-                <label for="amazona6" class="col-md-2 control-label">#6</label>
-                <div class="col-md-6">
-                  <select class="form-control" id="amazona6">
-                    <option>Ivette Sanjur</option>
-                    <option>Lucia Canto</option>
-                    <option>Maria Abrego</option>
-                    <option>Ambar Ruiz</option>
-                    <option>Melisa Delgado</option>
-                  </select>
-                </div>
-              </div>
-
-               <div class="form-group" >
-                <label for="amazona7" class="col-md-2 control-label">#7</label>
-                <div class="col-md-6">
-                  <select class="form-control" id="amazona7">
-                    <option>Ivette Sanjur</option>
-                    <option>Lucia Canto</option>
-                    <option>Maria Abrego</option>
-                    <option>Ambar Ruiz</option>
-                    <option>Melisa Delgado</option>
-                  </select>
-                </div>
-              </div>
-
-
-               <div class="form-group" >
-                <label for="amazona8" class="col-md-2 control-label">#8</label>
-                <div class="col-md-6">
-                  <select class="form-control" id="amazona8">
-                    <option>Ivette Sanjur</option>
-                    <option>Lucia Canto</option>
-                    <option>Maria Abrego</option>
-                    <option>Ambar Ruiz</option>
-                    <option>Melisa Delgado</option>
-                  </select>
-                </div>
-              </div>
-
-
-               <div class="form-group" >
-                <label for="amazona9" class="col-md-2 control-label">#9</label>
-                <div class="col-md-6">
-                  <select class="form-control" id="amazona9">
-                    <option>Ivette Sanjur</option>
-                    <option>Lucia Canto</option>
-                    <option>Maria Abrego</option>
-                    <option>Ambar Ruiz</option>
-                    <option>Melisa Delgado</option>
-                  </select>
-                </div>
-              </div>
-
-               <div class="form-group" >
-                <label for="amazona10" class="col-md-2 control-label">#10</label>
-                <div class="col-md-6">
-                  <select class="form-control" id="amazona10">
-                    <option>Ivette Sanjur</option>
-                    <option>Lucia Canto</option>
-                    <option>Maria Abrego</option>
-                    <option>Ambar Ruiz</option>
-                    <option>Melisa Delgado</option>
-                  </select>
-                </div>
-              </div>
-
-               <div class="form-group" >
-                <label for="amazona11" class="col-md-2 control-label">#11</label>
-                <div class="col-md-6">
-                  <select class="form-control" id="amazona11">
-                    <option>Ivette Sanjur</option>
-                    <option>Lucia Canto</option>
-                    <option>Maria Abrego</option>
-                    <option>Ambar Ruiz</option>
-                    <option>Melisa Delgado</option>
-                  </select>
-                </div>
-              </div>
-
-
-               <div class="form-group" >
-                <label for="amazona12" class="col-md-2 control-label">#12</label>
-                <div class="col-md-6">
-                  <select class="form-control" id="amazona12">
-                    <option>Ivette Sanjur</option>
-                    <option>Lucia Canto</option>
-                    <option>Maria Abrego</option>
-                    <option>Ambar Ruiz</option>
-                    <option>Melisa Delgado</option>
-                  </select>
-                </div>
-              </div>
-
-               <div class="form-group" >
-                <label for="amazona13" class="col-md-2 control-label">#13</label>
-                <div class="col-md-6">
-                  <select class="form-control" id="amazona13">
-                    <option>Ivette Sanjur</option>
-                    <option>Lucia Canto</option>
-                    <option>Maria Abrego</option>
-                    <option>Ambar Ruiz</option>
-                    <option>Melisa Delgado</option>
-                  </select>
-                </div>
-              </div>
-
-               <div class="form-group" >
-                <label for="amazona14" class="col-md-2 control-label">#14</label>
-                <div class="col-md-6">
-                  <select class="form-control" id="amazona14">
-                    <option>Ivette Sanjur</option>
-                    <option>Lucia Canto</option>
-                    <option>Maria Abrego</option>
-                    <option>Ambar Ruiz</option>
-                    <option>Melisa Delgado</option>
-                  </select>
-                </div>
-              </div>
-
-               <div class="form-group" >
-                <label for="amazona15" class="col-md-2 control-label">#15</label>
-                <div class="col-md-6">
-                  <select class="form-control" id="amazona15">
-                    <option>Ivette Sanjur</option>
-                    <option>Lucia Canto</option>
-                    <option>Maria Abrego</option>
-                    <option>Ambar Ruiz</option>
-                    <option>Melisa Delgado</option>
-                  </select>
-                </div>
-              </div>
-
-
-               <div class="form-group" >
-                <label for="amazona16" class="col-md-2 control-label">#16</label>
-                <div class="col-md-6">
-                  <select class="form-control" id="amazona16">
-                    <option>Ivette Sanjur</option>
-                    <option>Lucia Canto</option>
-                    <option>Maria Abrego</option>
-                    <option>Ambar Ruiz</option>
-                    <option>Melisa Delgado</option>
-                  </select>
-                </div>
-              </div>
-
-
-               <div class="form-group" >
-                <label for="amazona17" class="col-md-2 control-label">#17</label>
-                <div class="col-md-6">
-                  <select class="form-control" id="amazona17">
-                    <option>Ivette Sanjur</option>
-                    <option>Lucia Canto</option>
-                    <option>Maria Abrego</option>
-                    <option>Ambar Ruiz</option>
-                    <option>Melisa Delgado</option>
-                  </select>
-                </div>
-              </div>
-
-               <div class="form-group" >
-                <label for="amazona18" class="col-md-2 control-label">#18</label>
-                <div class="col-md-6">
-                  <select class="form-control" id="amazona18">
-                    <option>Ivette Sanjur</option>
-                    <option>Lucia Canto</option>
-                    <option>Maria Abrego</option>
-                    <option>Ambar Ruiz</option>
-                    <option>Melisa Delgado</option>
-                  </select>
-                </div>
-              </div>
+       
              <div class="form-group">
                 <div class="col-lg-offset-2 col-lg-10">
                   <button type="submit" class="btn btn-primary">

@@ -10,14 +10,27 @@ dim apellido
 dim edad
 dim idEquipo
 
-if request.Form("nombre") <> "" AND request.Form("apellido") <> "" AND request.Form("edad") <> "" AND request.Form("equipo") <> "" then
+
+
+if request.Form("nombre") <> empty AND request.Form("apellido") <> empty AND request.Form("edad") <> empty AND request.Form("equipo") <> empty then
 
 nombre = request.Form("nombre")
 apellido =request.Form("apellido") 
 edad = CINT(request.Form("edad"))
 equipo = CINT(request.Form("equipo"))
 
-response.redirect("PagResultado.asp?res=1" )
+set Con = Server.CreateObject("ADODB.CONNECTION")
+     Con.Open = STRCONEXION
+     
+     Set RsAmazona = Server.CreateObject("ADODB.RECORDSET")
+     
+     RsAmazona.Source = "Insert Into Amazonas ( Nombre  ,  Apellido  ,  Edad  ,   idEquipo ) Values ('"& nombre &"', '"& apellido &"', "& edad &", "& equipo &");"
+
+      RsAmazona.Open, Con 
+
+
+
+response.redirect("PagResultado.asp?res=1&Op=1" )
 
 else
 response.redirect("PagResultado.asp?res=2" )

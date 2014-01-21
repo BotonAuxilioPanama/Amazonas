@@ -68,12 +68,12 @@ RsModalidades.Source = "SELECT Modalidad.*FROM Modalidad;"
 
 
           <section class="col-md-12 col-xs-12">
-            <form class="form-horizontal col-md-8 col-md-offset-3 col-xs-12" role="form">
+            <form class="form-horizontal col-md-8 col-md-offset-3 col-xs-12" role="form"  action="GuardarTiempo.asp" method="post">
 
               <div class="form-group" >
                 <label for="amazona" class="col-md-2 control-label">Amazona</label>
                 <div class="col-md-6">
-                 <select class="form-control" id="amazona">
+                 <select class="form-control" id="amazona" name="amazona">
                 <%  ObtenerNombres(comp) %>
                   </select>
                 </div>
@@ -82,7 +82,7 @@ RsModalidades.Source = "SELECT Modalidad.*FROM Modalidad;"
               <div class="form-group">
                 <label for="Tiempo" class="col-md-2 control-label">Tiempo</label>
                 <div class="col-md-6">
-                  <input type="number" min="0" step="any"class="form-control" id="tiempo"
+                  <input type="number" min="0" step="any"class="form-control" id="tiempo" name="tiempo"
                   placeholder="Tiempo" required>
                 </div>
               </div>
@@ -90,15 +90,15 @@ RsModalidades.Source = "SELECT Modalidad.*FROM Modalidad;"
               <div class="form-group">
                 <label for="faltas" class="col-md-2 control-label">Faltas</label>
                 <div class="col-md-6">
-                  <input type="number" min="0" max="10" class="form-control" id="faltas" 
-                  placeholder="# de Obstaculos Derribados" required>
+                  <input type="number" min="0" max="10" class="form-control" id="faltas" name="faltas"
+                  placeholder="# de Obstaculos Derribados: 0, 1, 2, ..." required>
                 </div>
               </div>
 
               <div class="form-group">
                 <label for="fecha" class="col-md-2 control-label">Fecha</label>
                 <div class="col-md-6">
-                  <input type="date" class="form-control" id="fecha" 
+                  <input type="date" class="form-control" id="fecha"  name="fecha"
                   placeholder="Fecha" required value="<%= fechahoy %>">
                 </div>
               </div>

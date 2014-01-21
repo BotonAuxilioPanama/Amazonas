@@ -87,7 +87,7 @@ end if
              <div class="form-group" >
                 <label for="amazona<%=v%>" class="col-md-2 control-label">#<%=v%></label>
                 <div class="col-md-6">
-                  <select class="form-control" id="amazona<%=v%>">
+                  <select class="form-control" id="amazona<%=v%>" name="amazona<%=v%>">
                    <%ObtenerNombres(comp)%>
                   </select>
                 </div>

@@ -68,7 +68,7 @@ RsEquipos.Open, Con
             <div class="form-group">
               <label for="nombre" class="col-lg-2 control-label">Nombre</label>
               <div class="col-lg-10">
-                <input type="text" class="form-control" id="nombre"
+                <input type="text" class="form-control" id="nombre" name="nombre"
                 placeholder="Nombres" required>
               </div>
             </div>
@@ -76,7 +76,7 @@ RsEquipos.Open, Con
             <div class="form-group">
               <label for="apellido" class="col-lg-2 control-label">Apellido</label>
               <div class="col-lg-10">
-                <input type="text" class="form-control" id="apellido" 
+                <input type="text" class="form-control" id="apellido" name="apellido" 
                 placeholder="Apellidos" required>
               </div>
             </div>
@@ -84,7 +84,7 @@ RsEquipos.Open, Con
               <label for="edad" class="col-lg-2 control-label">Edad</label>
               <div class="col-lg-10">
                 <input type="number" min="10" max="40" class="form-control" id="edad" 
-                placeholder="Edad" required>
+                placeholder="Edad" required name="edad">
               </div>
             </div>
 
@@ -92,7 +92,7 @@ RsEquipos.Open, Con
             <div class="form-group">
               <label for="equipo" class="col-lg-2 control-label">Equipo</label>
               <div class="col-lg-10">
-                <select class="form-control" id="equipo">
+                <select class="form-control" id="equipo" name="equipo">
                   <%
                   if not RsEquipos.EOF then
                   Do While not RsEquipos.EOF

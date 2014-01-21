@@ -4,8 +4,11 @@
     
 dim res
 dim paginaTit
+dim op
+dim val
 
 res = CInt(Request.QueryString("res"))
+
 
 Select Case res
 Case 1
@@ -16,9 +19,14 @@ Case Else
 paginaTit = "Desconocido"
 End Select
 
+
+
+if res = 1 then 
+op = CInt(Request.QueryString("Op"))
+end if 
+
+
 %>
-
-
 
 
 <head>
@@ -59,26 +67,25 @@ End Select
   <div class="container alert alert-danger">
     <h1><span class="glyphicon glyphicon-remove-circle"> </span>Error</h1>
     <p>Ha ocurrido un problema durante el almacenamiento de los datos en el servidor. Por favor regrese e intentelo de nuevo. </p>
-    <p><a class="btn btn-primary btn-lg" role="button"><span class="glyphicon glyphicon-circle-arrow-left">  </span> Regresar</a></p>
+    <p><a class="btn btn-primary btn-lg" role="button"><span class="glyphicon glyphicon-circle-arrow-left">  </span> Regresar</a>
+     <a class="btn btn-primary btn-lg" role="button" href="Menu.asp"><span class="glyphicon glyphicon-align-justify">  </span>   Menu Principal</a></p>
   </div>
 </div>
-<% else  if res = 1 then %>
+<% elseif res = 1 then %>
 
 
  <div class="jumbotron">
   <div class="container alert alert-success">
     <h1> <span class="glyphicon glyphicon-ok-circle"> </span>Datos Guardados</h1>
     <p>La Información enviada se ha almacenado correctamente en el servidor y puede ser utilizada de inmediato.</p>
-    <p><a class="btn btn-primary btn-lg" role="button"><span class="glyphicon glyphicon-align-justify">  </span>   Menu Principal</a></p>
+    <p><a class="btn btn-primary btn-lg" role="button" href="SelCompetencia.asp?Op=<%=op%>"><span class="glyphicon glyphicon-plus">  </span>   Nueva Inserción</a>
+     <a class="btn btn-primary btn-lg" role="button" href="Menu.asp"><span class="glyphicon glyphicon-align-justify">  </span>   Menu Principal</a></p>
   </div>
 </div>
 
 <%end if 
-end if %>
-
-
-
-     
+ %>
+  
         </div>
       </div>
 

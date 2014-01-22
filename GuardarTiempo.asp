@@ -8,6 +8,7 @@
 dim amazona
 dim tiempo
 dim faltas
+dim faltasT
 dim fecha
 dim modalidad
 dim recorrido
@@ -21,6 +22,13 @@ fecha = request.Form("fecha")
 modalidad = CINT(request.Form("modalidad"))
 recorrido = CINT(request.Form("recor"))
 
+if modalidad = 1 then 
+	faltasT = faltas * 2
+	else
+	faltasT = faltas * 5
+end if 
+
+
 
 
 set Con = Server.CreateObject("ADODB.CONNECTION")
@@ -28,7 +36,7 @@ set Con = Server.CreateObject("ADODB.CONNECTION")
      
      Set RsAmazona = Server.CreateObject("ADODB.RECORDSET")
      
-     RsAmazona.Source = "Insert Into Recorridos ( idAmazona  ,  idModalidad  ,  Tiempo , Falta,  Fecha, NumRecor ) Values       ("& amazona &", "& modalidad &", "& tiempo &", "& faltas &" , '"& fecha &"' , " & recorrido & ");"
+     RsAmazona.Source = "Insert Into Recorridos ( idAmazona  ,  idModalidad  ,  Tiempo , Falta,  Fecha, NumRecor ) Values       ("& amazona &", "& modalidad &", "& tiempo &", "& faltasT &" , '"& fecha &"' , " & recorrido & ");"
 
       RsAmazona.Open, Con 
 

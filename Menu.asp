@@ -60,7 +60,7 @@
             <span class="glyphicon glyphicon-chevron-right"></span>Seleccionar Competencia
           </a> -->
 
-          <a class="btn btn-primary btn-lg btn-block btn-lg" href="Ranking.html" role="button">
+          <a class="btn btn-primary btn-lg btn-block btn-lg" href="Ranking.asp" role="button">
             <span class="glyphicon glyphicon-chevron-right"></span>Ver Ranking
           </a>
 

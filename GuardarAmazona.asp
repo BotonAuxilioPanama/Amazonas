@@ -32,7 +32,7 @@ set Con = Server.CreateObject("ADODB.CONNECTION")
 
 
 
-response.redirect("PagResultado.asp?res=1&Op=1&Comp="&comp" )
+response.redirect("PagResultado.asp?res=1&Op=1&Comp="&comp )
 
 else
 response.redirect("PagResultado.asp?res=2" )

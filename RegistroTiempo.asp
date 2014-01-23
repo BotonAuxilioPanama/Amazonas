@@ -29,7 +29,7 @@ set Con = Server.CreateObject("ADODB.CONNECTION")
 Con.Open = STRCONEXION
 
 Set RsModalidades = Server.CreateObject("ADODB.RECORDSET")
-RsModalidades.Source = "SELECT Modalidad.*FROM Modalidad;" 
+RsModalidades.Source = "SELECT Modalidad.*FROM Modalidad order by Nombre ASC;" 
 
 
  
@@ -68,7 +68,7 @@ RsModalidades.Source = "SELECT Modalidad.*FROM Modalidad;"
 
 
           <section class="col-md-12 col-xs-12">
-            <form class="form-horizontal col-md-8 col-md-offset-3 col-xs-12" role="form"  action="GuardarTiempo.asp" method="post">
+            <form class="form-horizontal col-md-8 col-md-offset-3 col-xs-12" role="form"  action="GuardarTiempo.asp?Comp=<%=comp%>" method="post">
 
               <div class="form-group" >
                 <label for="amazona" class="col-md-2 control-label">Amazona</label>
@@ -95,13 +95,13 @@ RsModalidades.Source = "SELECT Modalidad.*FROM Modalidad;"
                 </div>
               </div>
 
-              <div class="form-group">
+              <!-- <div class="form-group">
                 <label for="fecha" class="col-md-2 control-label">Fecha</label>
                 <div class="col-md-6">
                   <input type="date" class="form-control" id="fecha"  name="fecha"
                   placeholder="Fecha" required value="<%= fechahoy %>">
                 </div>
-              </div>
+              </div> -->
 
              <!--  <div class="form-group">
                 <label for="modalidad" class="col-md-2 control-label">Modalidad</label>

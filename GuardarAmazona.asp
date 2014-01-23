@@ -9,6 +9,7 @@ dim nombre
 dim apellido
 dim edad
 dim idEquipo
+dim comp
 
 
 
@@ -18,6 +19,7 @@ nombre = request.Form("nombre")
 apellido =request.Form("apellido") 
 edad = CINT(request.Form("edad"))
 equipo = CINT(request.Form("equipo"))
+comp = CInt(Request.QueryString("Comp"))
 
 set Con = Server.CreateObject("ADODB.CONNECTION")
      Con.Open = STRCONEXION
@@ -30,7 +32,7 @@ set Con = Server.CreateObject("ADODB.CONNECTION")
 
 
 
-response.redirect("PagResultado.asp?res=1&Op=1" )
+response.redirect("PagResultado.asp?res=1&Op=1&Comp="&comp" )
 
 else
 response.redirect("PagResultado.asp?res=2" )

@@ -6,6 +6,8 @@ dim res
 dim paginaTit
 dim op
 dim val
+dim comp
+dim page
 
 res = CInt(Request.QueryString("res"))
 
@@ -23,6 +25,19 @@ End Select
 
 if res = 1 then 
 op = CInt(Request.QueryString("Op"))
+comp = CInt(Request.QueryString("Comp"))
+Select Case op
+Case 1
+page = "Registro.asp?Comp="&comp
+Case 2 
+page = "RegistroTiempo.asp?Comp="&comp
+Case 3
+page = "RegOrden.asp?Comp="&comp
+End Select
+
+
+
+
 end if 
 
 
@@ -78,7 +93,7 @@ end if
   <div class="container alert alert-success">
     <h1> <span class="glyphicon glyphicon-ok-circle"> </span>Datos Guardados</h1>
     <p>La Información enviada se ha almacenado correctamente en el servidor y puede ser utilizada de inmediato.</p>
-    <p><a class="btn btn-primary btn-lg" role="button" href="SelCompetencia.asp?Op=<%=op%>"><span class="glyphicon glyphicon-plus">  </span>   Nueva Inserción</a>
+    <p><a class="btn btn-primary btn-lg" role="button" href="<%=page%>"><span class="glyphicon glyphicon-plus">  </span>   Nueva Inserción</a>
      <a class="btn btn-primary btn-lg" role="button" href="Menu.asp"><span class="glyphicon glyphicon-align-justify">  </span>   Menu Principal</a></p>
   </div>
 </div>

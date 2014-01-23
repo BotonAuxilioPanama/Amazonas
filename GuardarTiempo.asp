@@ -12,15 +12,18 @@ dim faltasT
 dim fecha
 dim modalidad
 dim recorrido
+dim comp
 
-if request.Form("amazona") <> empty AND request.Form("tiempo") <> empty AND request.Form("faltas") <> empty AND request.Form("fecha") <> empty  AND request.Form("modalidad") <> empty  AND request.Form("recor") <> empty AND IsNumeric(request.Form("tiempo")) then
+if request.Form("amazona") <> empty AND request.Form("tiempo") <> empty AND request.Form("faltas") <> empty AND request.Form("modalidad") <> empty  AND request.Form("recor") <> empty AND IsNumeric(request.Form("tiempo")) then
 
 amazona = CInt(request.Form("amazona"))
 tiempo = CDbl(request.Form("tiempo"))
 faltas = CINT(request.Form("faltas"))
-fecha = request.Form("fecha")
+fecha = Date()
 modalidad = CINT(request.Form("modalidad"))
 recorrido = CINT(request.Form("recor"))
+comp = CInt(Request.QueryString("Comp"))
+
 
 if modalidad = 1 then 
 	faltasT = faltas * 2
@@ -42,7 +45,7 @@ set Con = Server.CreateObject("ADODB.CONNECTION")
 
 
 
-response.redirect("PagResultado.asp?res=1&Op=2" )
+response.redirect("PagResultado.asp?res=1&Op=2&Comp="&comp )
 
 else
 response.redirect("PagResultado.asp?res=2" )

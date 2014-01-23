@@ -64,11 +64,11 @@
             <span class="glyphicon glyphicon-chevron-right"></span>Ver Ranking
           </a>
 
-          <a class="btn btn-primary btn-lg btn-block btn-lg" href="RankingDia.html" role="button">
+          <a class="btn btn-primary btn-lg btn-block btn-lg" href="RankingDia.asp" role="button">
             <span class="glyphicon glyphicon-chevron-right"></span>Mejor por Fecha
           </a>
 
-           <a class="btn btn-primary btn-lg btn-block btn-lg" href="RankingGlobal.html" role="button">
+           <a class="btn btn-primary btn-lg btn-block btn-lg" href="RankingGlobal.asp" role="button">
             <span class="glyphicon glyphicon-chevron-right"></span>Ver Ranking Global
           </a>
 

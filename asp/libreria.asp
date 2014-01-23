@@ -26,7 +26,7 @@ set Con = Server.CreateObject("ADODB.CONNECTION")
 Con.Open = STRCONEXION
 
 Set RsPersonas = Server.CreateObject("ADODB.RECORDSET")
-RsPersonas.Source = "SELECT TOP 3 Amazonas.Nombre, Amazonas.Apellido, Equipos.Nombre AS Equipo, Sum([Recorridos].[Tiempo]+[Recorridos].[Falta])/4 AS Promedio FROM Modalidad INNER JOIN (Equipos INNER JOIN (Amazonas INNER JOIN Recorridos ON Amazonas.idAmazona = Recorridos.idAmazona) ON Equipos.idEquipo = Amazonas.idEquipo) ON Modalidad.idModalidad = Recorridos.idModalidad GROUP BY Amazonas.Nombre, Amazonas.Apellido, Equipos.Nombre, Equipos.idCompetencia HAVING (((Equipos.idCompetencia)="& comp &")) ORDER BY Sum([Recorridos].[Tiempo]+[Recorridos].[Falta])/4;"
+RsPersonas.Source = "SELECT TOP 3 Amazonas.Nombre, Amazonas.Apellido, Equipos.Nombre AS Equipo, AVG([Recorridos].[Tiempo]+[Recorridos].[Falta]) AS Promedio FROM Modalidad INNER JOIN (Equipos INNER JOIN (Amazonas INNER JOIN Recorridos ON Amazonas.idAmazona = Recorridos.idAmazona) ON Equipos.idEquipo = Amazonas.idEquipo) ON Modalidad.idModalidad = Recorridos.idModalidad GROUP BY Amazonas.Nombre, Amazonas.Apellido, Equipos.Nombre, Equipos.idCompetencia HAVING (((Equipos.idCompetencia)="& comp &")) ORDER BY AVG([Recorridos].[Tiempo]+[Recorridos].[Falta]);"
 RsPersonas.Open, Con
 dim pos     
 dim color
@@ -176,9 +176,5 @@ Else%>
 <%End IF
 
 end Function
-
-
-
-
 
 %>

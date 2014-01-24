@@ -43,7 +43,7 @@
           </header>
 
           <div class="row"> 
-            <section class="col-md-6 col-xs-12">
+            <section class="col-md-6 col-xs-12 ">
               <h2>Competencia Nacional</h2>
 
               <article class="table-responsive col-md-6 col-md-offset-3 col-xs-12">

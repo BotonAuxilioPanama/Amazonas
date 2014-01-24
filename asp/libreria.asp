@@ -1,6 +1,7 @@
-
-
 <%
+<!-- Sesiones y Usuarios ---------------------------------------------------------------------------------------------->
+
+
 <!-- Interfase ---------------------------------------------------------------------------------------------->
 sub cabecera(nombre)
 %>
@@ -97,7 +98,10 @@ if not RsPersonas.EOF then
 %>
  <table class="table table-condensed">
                  <tr class="active">
-                   <th >#</th> <th >Amazona</th> <th >Equipo</th> <th >Promedio</th>
+                   <th >#</th>
+                    <th class="text-center">Amazona</th> 
+                    <th class="text-center">Equipo</th>
+                     <th class="text-center">Promedio</th>
                  </tr>
 
 <%
@@ -117,7 +121,10 @@ End Select
 %>
 
  <tr class="<%=color%>">
-    <td><%=pos%></td> <td><%=RsPersonas("Nombre")&" "&RsPersonas("Apellido")%></td> <td><%=RsPersonas("Equipo")%></td> <td><%=formatnumber(RsPersonas("Promedio"),3)%></td>
+    <td class="text-center"><%=pos%></td> 
+    <td><%=RsPersonas("Nombre")&" "&RsPersonas("Apellido")%></td>
+     <td class="text-center"><%=RsPersonas("Equipo")%></td> 
+     <td class="text-center"><%=formatnumber(RsPersonas("Promedio"),3)%></td>
   </tr>
 
 <%
@@ -151,7 +158,10 @@ if not RsPersonas.EOF then
 %>
  <table class="table table-condensed">
                  <tr class="active">
-                   <th >#</th> <th >Amazona</th> <th >Equipo</th> <th >Tiempo</th>
+                   <th class="text-center" >#</th> 
+                   <th class="text-center" >Amazona</th>
+                    <th class="text-center">Equipo</th> 
+                    <th class="text-center">Tiempo</th>
                  </tr>
 
 <%
@@ -171,7 +181,10 @@ End Select
 %>
 
  <tr class="<%=color%>">
-    <td><%=pos%></td> <td><%=RsPersonas("Nombre")&" "&RsPersonas("Apellido")%></td> <td><%=RsPersonas("Equipo")%></td> <td><%=formatnumber(RsPersonas("Promedio"),3)%></td>
+    <td class="text-center"><%=pos%></td>
+     <td><%=RsPersonas("Nombre")&" "&RsPersonas("Apellido")%></td> 
+     <td class="text-center"><%=RsPersonas("Equipo")%></td> 
+     <td class="text-center"><%=formatnumber(RsPersonas("Promedio"),3)%></td>
   </tr>
 
 <%
@@ -206,7 +219,9 @@ if not RsPersonas.EOF then
 %>
   <table class="table table-condensed">
              <tr class="active">
-               <th >#</th> <th >Equipo</th> <th >Tiempo</th>
+               <th class="text-center">#</th > 
+               <th class="text-center">Equipo</th> 
+               <th class="text-center">Tiempo</th>
              </tr>
 <%
 
@@ -225,7 +240,9 @@ End Select
 %>
 
  <tr class="<%=color%>">
-    <td><%=pos%></td> <td><%=RsPersonas("Equipo")%></td> <td><%=formatnumber(RsPersonas("Promedio"),3)%></td>
+    <td class="text-center"><%=pos%></td>
+     <td class="text-center"><%=RsPersonas("Equipo")%></td> 
+     <td class="text-center"><%=formatnumber(RsPersonas("Promedio"),3)%></td>
   </tr>
 
 <%
@@ -260,7 +277,10 @@ if not RsPersonas.EOF then
 %>
  <table class="table table-condensed">
                  <tr class="active">
-                   <th >#</th> <th >Amazona</th> <th >Equipo</th> <th >Promedio</th>
+                   <th class="text-center">#</th> 
+                   <th class="text-center">Amazona</th> 
+                   <th class="text-center">Equipo</th> 
+                   <th class="text-center">Promedio</th>
                  </tr>
 
 <%
@@ -280,7 +300,10 @@ End Select
 %>
 
  <tr class="<%=color%>">
-    <td><%=pos%></td> <td><%=RsPersonas("Nombre")&" "&RsPersonas("Apellido")%></td> <td><%=RsPersonas("Equipo")%></td> <td><%=formatnumber(RsPersonas("Promedio"),3)%></td>
+    <td class="text-center"><%=pos%></td> 
+    <td ><%=RsPersonas("Nombre")&" "&RsPersonas("Apellido")%></td> 
+    <td class="text-center"><%=RsPersonas("Equipo")%></td> 
+    <td class="text-center"><%=formatnumber(RsPersonas("Promedio"),3)%></td>
   </tr>
 
 <%
@@ -314,7 +337,10 @@ if not RsPersonas.EOF then
 %>
  <table class="table table-condensed">
                  <tr class="active">
-                   <th >#</th> <th >Amazona</th> <th >Equipo</th> <th >Tiempo</th>
+                   <th class="text-center">#</th> 
+                   <th class="text-center">Amazona</th> 
+                   <th class="text-center">Equipo</th> 
+                   <th class="text-center">Tiempo</th>
                  </tr>
 
 <%
@@ -336,7 +362,10 @@ End Select
 %>
 
  <tr class="<%=color%>">
-    <td><%=pos%></td> <td><%=RsPersonas("Nombre")&" "&RsPersonas("Apellido")%></td> <td><%=RsPersonas("Equipo")%></td> <td><%=formatnumber(RsPersonas("Promedio"),3)%></td>
+    <td class="text-center"><%=pos%></td> 
+    <td><%=RsPersonas("Nombre")&" "&RsPersonas("Apellido")%></td>
+     <td class="text-center"><%=RsPersonas("Equipo")%></td>
+      <td class="text-center"><%=formatnumber(RsPersonas("Promedio"),3)%></td>
   </tr>
 
 <%
@@ -371,7 +400,9 @@ if not RsPersonas.EOF then
 %>
   <table class="table table-condensed">
              <tr class="active">
-               <th >#</th> <th >Equipo</th> <th >Tiempo</th>
+               <th class="text-center">#</th> 
+               <th class="text-center">Equipo</th> 
+               <th class="text-center">Tiempo</th>
              </tr>
 <%
 
@@ -392,7 +423,9 @@ End Select
 %>
 
  <tr class="<%=color%>">
-    <td><%=pos%></td> <td><%=RsPersonas("Equipo")%></td> <td><%=formatnumber(RsPersonas("Promedio"),3)%></td>
+    <td class="text-center"><%=pos%></td>
+     <td class="text-center"><%=RsPersonas("Equipo")%></td> 
+     <td class="text-center"><%=formatnumber(RsPersonas("Promedio"),3)%></td>
   </tr>
 
 <%
@@ -429,7 +462,10 @@ if not RsPersonas.EOF then
 %>
  <table class="table table-condensed">
                  <tr class="active">
-                   <th >#</th> <th >Amazona</th> <th >Equipo</th> <th >Tiempo</th>
+                   <th class="text-center">#</th> 
+                   <th class="text-center">Amazona</th>
+                    <th class="text-center">Equipo</th> 
+                    <th class="text-center">Tiempo</th>
                  </tr>
 
 <%
@@ -451,7 +487,10 @@ End Select
 %>
 
  <tr class="<%=color%>">
-    <td><%=pos%></td> <td><%=RsPersonas("Nombre")&" "&RsPersonas("Apellido")%></td> <td><%=RsPersonas("Equipo")%></td> <td><%=formatnumber(RsPersonas("Promedio"),3)%></td>
+    <td class="text-center"><%=pos%></td> 
+    <td ><%=RsPersonas("Nombre")&" "&RsPersonas("Apellido")%></td>
+     <td class="text-center"><%=RsPersonas("Equipo")%></td>
+      <td class="text-center"><%=formatnumber(RsPersonas("Promedio"),3)%></td>
   </tr>
 
 <%
@@ -487,7 +526,10 @@ if not RsPersonas.EOF then
 %>
  <table class="table table-condensed">
                  <tr class="active">
-                   <th >#</th> <th >Amazona</th> <th >Equipo</th> <th >Tiempo</th>
+                   <th class="text-center">#</th>
+                    <th class="text-center">Amazona</th> 
+                    <th class="text-center">Equipo</th> 
+                    <th class="text-center">Tiempo</th>
                  </tr>
 
 <%
@@ -509,7 +551,10 @@ End Select
 %>
 
  <tr class="<%=color%>">
-    <td><%=pos%></td> <td><%=RsPersonas("Nombre")&" "&RsPersonas("Apellido")%></td> <td><%=RsPersonas("Equipo")%></td> <td><%=formatnumber(RsPersonas("Promedio"),3)%></td>
+    <td class="text-center"><%=pos%></td>
+     <td><%=RsPersonas("Nombre")&" "&RsPersonas("Apellido")%></td> 
+     <td class="text-center"><%=RsPersonas("Equipo")%></td> 
+     <td class="text-center"><%=formatnumber(RsPersonas("Promedio"),3)%></td>
   </tr>
 
 <%

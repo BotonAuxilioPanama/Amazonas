@@ -64,6 +64,7 @@ End Select
             <a class="btn btn-primary btn-lg btn-block btn-lg" href="<%=pagina+"?Comp=1"%>" role="button">
             <span class="glyphicon glyphicon-chevron-right"></span>
             Competencia Nacional</a>
+            
 
             <a class="btn btn-primary btn-lg btn-block btn-lg" href="<%=pagina+"?Comp=2"%>" role="button">
             <span class="glyphicon glyphicon-chevron-right"></span>

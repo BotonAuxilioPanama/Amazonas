@@ -37,15 +37,15 @@ set Con = Server.CreateObject("ADODB.CONNECTION")
 						cont = 1%>
 		<table class="table table-condensed table-bordered">
 			<tr class="label-success">
-					<th >#</th>
-					<th >Amazona</th>
-					<th >Equipo</th>
-					<th  >Fecha</th>
-					<th  >Modalidad</th>
-					<th>Recorrido</th>
-					<th>Tiempo</th>
-					<th>Falta</th>
-					<th><span class="glyphicon glyphicon-edit"> </span>Editar</th>
+					<th class="text-center">#</th>
+					<th class="text-center">Amazona</th>
+					<th class="text-center">Equipo</th>
+					<th  class="text-center">Fecha</th>
+					<th class="text-center" >Modalidad</th>
+					<th class="text-center">Recorrido</th>
+					<th class="text-center">Tiempo</th>
+					<th class="text-center">Falta</th>
+					<th class="text-center"><span class="glyphicon glyphicon-edit"> </span>Editar</th>
 				</tr>
 			
 	<%Do While not RsAmazonas.EOF 
@@ -58,15 +58,15 @@ set Con = Server.CreateObject("ADODB.CONNECTION")
 			end if%>
 
 			<tr>
-				<td class="<%=clas%>"><%=cont%></td>
+				<td class="<%=clas%> text-center"><%=cont%></td>
 				<td class="<%=clas%>"><%=RsAmazonas("Nombre")&" "&RsAmazonas("Apellido")%></td>
 				<td class="<%=clas%>"><%=RsAmazonas("Equipo")%></td>
-				<td class="<%=clas%>"><%=RsAmazonas("Fecha")%></td>
-				<td class="<%=clas%>"><%=RsAmazonas("Modalidad")%></td>
-				<td class="<%=clas%>"><%=RsAmazonas("#Recorrido")%></td>
-				<td class="<%=clas%>"><%=formatnumber(RsAmazonas("Tiempo"),3)%></td>
-				<td class="<%=clas%>"><%=RsAmazonas("Falta")%></td>
-				<td class="<%=clas%>"><a href="Editar.asp?id=<%=RsAmazonas("idRecorrido")%>"><span class="glyphicon glyphicon-edit"> </span></td>
+				<td class="<%=clas%> text-center"><%=RsAmazonas("Fecha")%></td>
+				<td class="<%=clas%> text-center"><%=RsAmazonas("Modalidad")%></td>
+				<td class="<%=clas%> text-center"><%=RsAmazonas("#Recorrido")%></td>
+				<td class="<%=clas%> text-center"><%=formatnumber(RsAmazonas("Tiempo"),3)%></td>
+				<td class="<%=clas%> text-center"><%=RsAmazonas("Falta")%></td>
+				<td class="<%=clas%> text-center"><a href="Editar.asp?id=<%=RsAmazonas("idRecorrido")%>"><span class="glyphicon glyphicon-edit"> </span></td>
 			</tr>
                     <%RsAmazonas.MoveNext
 					cont = cont + 1

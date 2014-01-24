@@ -67,46 +67,49 @@ Do While not RsFechas.EOF
 						<article class="table-responsive col-md-10 col-md-offset-1 col-xs-12">
 		<table class="table table-condensed table-bordered">
 			<tr class="active">
-					<th rowspan="3">#</th>
-					<th rowspan="3">Amazona</th>
-					<th rowspan="3">Equipo</th>
-					<th colspan="6" class="success">Polos</th>
-					<th colspan="6" class="danger">Barriles</th>
+					<th rowspan="3 text-center">#</th>
+					<th rowspan="3 text-center">Amazona</th>
+					<th rowspan="3 text-center">Equipo</th>
+					<th colspan="6" class="success text-center">Polos</th>
+					<th colspan="6" class="danger text-center">Barriles</th>
 				</tr>
 
 				<tr>
-					<td colspan="3" class="success">Recorrido 1</td>
-					<td colspan="3" class="active">Recorrido 2</td>
-					<td colspan="3" class="danger">Recorrido 1</td>
-					<td colspan="3" class="active">Recorrido 2</td>
+					<td colspan="3" class="success text-center">Recorrido 1</td>
+					<td colspan="3" class="active text-center">Recorrido 2</td>
+					<td colspan="3" class="danger text-center">Recorrido 1</td>
+					<td colspan="3" class="active text-center">Recorrido 2</td>
 				</tr>
 
 				<tr>
-					<td class="success">Tiempo</td>
-					<td class="success">Falta</td>
-					<td class="success"><span class="glyphicon glyphicon-edit"> </span></td>
+					<td class="success text-center">Tiempo</td>
+					<td class="success text-center">Falta</td>
+					<td class="success text-center"><span class="glyphicon glyphicon-edit"> </span></td>
 
 
-					<td class="active">Tiempo</td>
-					<td class="active">Falta</td>
-					<td class="active"><span class="glyphicon glyphicon-edit"> </span></td>
+					<td class="active text-center">Tiempo</td>
+					<td class="active text-center">Falta</td>
+					<td class="active text-center"><span class="glyphicon glyphicon-edit"> </span></td>
 
 
-					<td class="danger">Tiempo</td>
-					<td class="danger">Falta</td>
-					<td class="danger"><span class="glyphicon glyphicon-edit"> </span></td>
+
+					<td class="danger text-center">Tiempo</td>
+					<td class="danger text-center">Falta</td>
+					<td class="danger text-center"><span class="glyphicon glyphicon-edit"> </span></td>
 
 
-					<td class="active">Tiempo</td>
-					<td class="active">Falta</td>
-					<td class="active"><span class="glyphicon glyphicon-edit"> </span></td>
+
+					<td class="active text-center">Tiempo</td>
+					<td class="active text-center">Falta</td>
+					<td class="active text-center"><span class="glyphicon glyphicon-edit"> </span></td>
+
 				</tr>
 				<%Do While not RsAmazonas.EOF %>
 
 							<tr>
-							   <td class="active" ><%=cont%></td>
+							   <td class="active text-center" ><%=cont%></td>
 							   <td class="active" ><%=RsAmazonas("Nombre")&" "&RsAmazonas("Apellido")%></td>
-							   <td class="active"><%=RsAmazonas("Equipo")%></td>
+							   <td class="active "><%=RsAmazonas("Equipo")%></td>
 
 			             <%
 
@@ -160,9 +163,9 @@ Do While not RsFechas.EOF
 						    RsRecorrido.MoveNext
 							loop
 							 for j = 0 to 3 step 1%>
-                                  <td class="<%=clases(j)%>"><%=formatnumber(tempo(j),3)%></td>
-								<td class="<%=clases(j)%>"><%=falt(j)%></td>
-							<td class="<%=clases(j)%>"><a href="Editar.asp?id=<%=id(j)%>"><span class="glyphicon glyphicon-edit"> </span></td>
+                                  <td class="<%=clases(j)%> text-center"><%=formatnumber(tempo(j),3)%></td>
+								<td class="<%=clases(j)%> text-center"><%=falt(j)%></td>
+							<td class="<%=clases(j)%> text-center"><a href="Editar.asp?id=<%=id(j)%>"><span class="glyphicon glyphicon-edit"> </span></td>
                             <% 
                             next
 							RsRecorrido.Close

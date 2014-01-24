@@ -1,5 +1,46 @@
 
 <!DOCTYPE html>
+<%
+'--------------------------------------------------------------------------
+'         Inclusión del Archivo de Base de Datos
+'--------------------------------------------------------------------------
+%>
+<!-- #include file = "asp/libreria.asp"-->
+<!-- #include file = "db/conectar.asp"-->
+<%
+if request.Form("user") <> empty AND request.Form("pass") <> empty then
+
+dim user
+dim pass
+dim com
+com = Chr(34) 
+
+user = request.Form("user")
+pass = request.Form("pass")
+
+set Con = Server.CreateObject("ADODB.CONNECTION")
+Con.Open = STRCONEXION
+
+Set RsUsuario = Server.CreateObject("ADODB.RECORDSET")
+RsUsuario.Source = "SELECT Usuarios.idUser, Usuarios.Nick, Usuarios.Password FROM Usuarios WHERE (((Usuarios.Nick)="&com&user&com&"));"
+RsUsuario.Open, Con
+if not RsUsuario.EOF then
+
+Do While not Rsusuario.EOF
+RsUsuario.MoveNext
+
+  response.redirect("Menu.asp" )
+Loop
+RsUsuario.Close
+else
+response.redirect("Login.asp?res=1" )
+
+end if 
+
+end if
+
+
+%>
 <html lang="en">
   <head>
     <meta charset="utf-8">
@@ -13,6 +54,7 @@
 
     <!-- Bootstrap core CSS -->
     <link href="css/bootstrap.css" rel="stylesheet">
+    <link href="css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Custom styles for this template -->
     <link href="css/signin.css" rel="stylesheet">
@@ -46,7 +88,23 @@
         <button class="btn btn-lg btn-primary btn-block" type="submit">
           <span class="glyphicon glyphicon-log-in"></span>
         Iniciar Sesión</button>
-      </form>
+         </form> 
+        
+  <%
+    if request.QueryString("res") <> empty  then
+      if (request.QueryString("res") = 1) then
+            %>
+            <div class="alert alert-danger col-md-6 col-md-offset-3">
+             
+              <p class="text-center"><strong>Error</strong> Combinación de datos incorrecta!!!.</p>
+            </div>
+
+            <%
+      end if 
+    end if 
+
+  %>
+      
 
     </div> <!-- /container -->
   </div>

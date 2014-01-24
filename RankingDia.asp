@@ -9,11 +9,11 @@
 <!-- #include file = "db/conectar.asp"-->
 
 <%
-
+existe_sesion
 dim dia
-          dim mes 
-          dim anio
-          dim fecha
+dim mes 
+dim anio
+dim fecha
 dia = CInt(Request.QueryString("d"))
 mes = CInt(Request.QueryString("m"))
 anio = CInt(Request.QueryString("a"))

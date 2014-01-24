@@ -12,7 +12,6 @@ dim idEquipo
 dim comp
 
 
-
 if request.Form("nombre") <> empty AND request.Form("apellido") <> empty AND request.Form("edad") <> empty AND request.Form("equipo") <> empty then
 
 nombre = request.Form("nombre")

@@ -1,9 +1,17 @@
 <%
 <!-- Sesiones y Usuarios ---------------------------------------------------------------------------------------------->
 
+function existe_sesion()
+
+If Session("User") = "" Then 
+	response.redirect("Login.asp")
+End If
+
+end function
 
 <!-- Interfase ---------------------------------------------------------------------------------------------->
 sub cabecera(nombre)
+existe_sesion
 %>
 <!DOCTYPE html>
 <html lang = "es">

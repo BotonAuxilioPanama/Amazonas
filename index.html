@@ -1,51 +1,66 @@
 <!DOCTYPE html>
-<html lang = "es">
-<head>
-  <title>Titulo </title>
 
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Login del Sistema">
-  <meta name="author" content="@jockrlos22">
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="shortcut icon" href="../../docs-assets/ico/favicon.png">
 
+    <title>Iniciar Sesión</title>
 
-  <!-- Bootstrap -->
-  <link href="css/bootstrap.min.css" rel="stylesheet">
-  <link href="css/estilos.css" rel="stylesheet">
+    <!-- Bootstrap core CSS -->
+    <link href="css/bootstrap.css" rel="stylesheet">
+    <link href="css/bootstrap.min.css" rel="stylesheet">
 
-  <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-  <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!-- Custom styles for this template -->
+    <link href="css/signin.css" rel="stylesheet">
+
+    <link href="css/estilos.css" rel="stylesheet">
+
+    <!-- Just for debugging purposes. Don't actually copy this line! -->
+    <!--[if lt IE 9]><script src="../../docs-assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
       <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
       <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
-      <![endif]-->
-    </head>
-    <body>
-     
-      <div id="wrap">
-      <div class="container">
-      <header class="page-header">
-        <h1 >Encuentro de Amazonas 2014 <br> <small>Feria de Sona, Veraguas</small></h1>
-        <h3 >Index</h3> 
-      </header>
-      
-           <a class="btn btn-primary btn-lg btn-block btn-lg" href="Menu.asp" role="button">
-            <span class="glyphicon glyphicon-chevron-right"></span>Menu
-          </a>
-     
-        </div>
-      </div>
+    <![endif]-->
+  </head>
 
-    <footer id="footer">
+  <body>
+    <div id="wrap">
+    <div class="container">
+     <header class="page-header">
+            <h1 >Encuentro de Amazonas 2014 <br> <small>Feria de Sona, Veraguas </small></h1>
+    </header>
+
+      <form class="form-signin" role="form" action="Verificar.asp" method="post">
+        <h2 class="form-signin-heading">Inicio de sesion</h2>
+        <input type="text" class="form-control" placeholder="Usuario" required autofocus name="user">
+        <input type="password" class="form-control" placeholder="Contraseña" required name="pass">
+       <!--  <label class="checkbox">
+          <input type="checkbox" value="remember-me"> Remember me
+        </label> -->
+        <button class="btn btn-lg btn-primary btn-block" type="submit">
+          <span class="glyphicon glyphicon-log-in"></span>
+        Iniciar Sesión</button>
+         </form> 
+        
+     
+
+    </div> <!-- /container -->
+  </div>
+  <footer id="footer">
        <div class="container">
        <p class="text-muted"><span class="glyphicon glyphicon-copyright-mark"> </span>Club de Amazonas de Veraguas 2014</p>
       </div>
     </footer>
 
-      <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-      <script src="https://code.jquery.com/jquery.js"></script>
-      <!-- Include all compiled plugins (below), or include individual files as needed -->
-      <script src="js/bootstrap.min.js"></script>
-    </body>
-    </html>
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+  </body>
+</html>

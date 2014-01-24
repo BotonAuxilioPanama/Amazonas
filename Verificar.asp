@@ -5,32 +5,38 @@
 %>
 <!-- #include file = "asp/libreria.asp"-->
 <!-- #include file = "db/conectar.asp"-->
-
 <%
-dim usuer
-dim pass
+if request.Form("user") <> empty AND request.Form("pass") <> empty then
 
-user = Re
+dim user
+dim pass
+dim com
+com = Chr(34) 
+
+user = request.Form("user")
+pass = request.Form("pass")
 
 set Con = Server.CreateObject("ADODB.CONNECTION")
 Con.Open = STRCONEXION
 
 Set RsUsuario = Server.CreateObject("ADODB.RECORDSET")
-RsUsuario.Source = "SELECT Amazonas.* FROM (Competencia INNER JOIN Equipos ON Competencia.idCompetencia = Equipos.idCompetencia) INNER JOIN Amazonas ON Equipos.idEquipo = Amazonas.idEquipo WHERE (((Competencia.idCompetencia)= "& comp &")) order by Amazonas.Nombre ASC  ;"
+RsUsuario.Source = "SELECT Usuarios.idUser, Usuarios.Nick, Usuarios.Password FROM Usuarios WHERE (((Usuarios.Nick)="&com&user&com&"));"
 RsUsuario.Open, Con
 if not RsUsuario.EOF then
-Do While not Rsusuario.EOF
-
-RsUsuario.MoveNext
-Loop
+  if pass = RsUsuario("Password")then
+      Session.contents("idUser") = RsUsuario("idUser")
+      Session.contents("User") = RsUsuario("Nick")
+     response.redirect("Menu.asp" )
+     else
+     response.redirect("Login.asp?res=1" )
+     end if
 RsUsuario.Close
 else
-
+response.redirect("Login.asp?res=1" )
 
 end if 
 
-
-
+end if
 
 
 %>

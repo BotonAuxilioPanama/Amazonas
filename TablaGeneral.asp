@@ -9,11 +9,10 @@
 dim comp
 dim paginaTit
 dim clase
-
- dim tempo(4)
-										dim falt(4)
-										dim id(4)
-                                        dim clases(4)
+dim tempo(4)
+dim falt(4)
+dim id(4)
+dim clases(4)
 comp = CInt(Request.QueryString("Comp"))
 
 Select Case comp

@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <%
 '--------------------------------------------------------------------------
@@ -25,12 +24,13 @@ Set RsUsuario = Server.CreateObject("ADODB.RECORDSET")
 RsUsuario.Source = "SELECT Usuarios.idUser, Usuarios.Nick, Usuarios.Password FROM Usuarios WHERE (((Usuarios.Nick)="&com&user&com&"));"
 RsUsuario.Open, Con
 if not RsUsuario.EOF then
-
-Do While not Rsusuario.EOF
-RsUsuario.MoveNext
-
-  response.redirect("Menu.asp" )
-Loop
+  if pass = RsUsuario("Password")then
+      Session.contents("idUser") = RsUsuario("idUser")
+      Session.contents("User") = RsUsuario("Nick")
+     response.redirect("Menu.asp" )
+     else
+     response.redirect("Login.asp?res=1" )
+     end if
 RsUsuario.Close
 else
 response.redirect("Login.asp?res=1" )

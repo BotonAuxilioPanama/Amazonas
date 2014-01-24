@@ -9,7 +9,7 @@
 <!-- #include file = "db/conectar.asp"-->
 
 <%
-
+existe_sesion
 %>
 <head>
 <title>Ranking Global </title>

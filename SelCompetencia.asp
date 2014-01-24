@@ -5,9 +5,13 @@
 '         Inclusión del Archivo de Base de Datos
 '--------------------------------------------------------------------------
 %>
-
+<!-- #include file = "asp/libreria.asp"-->
+<!-- #include file = "db/conectar.asp"-->
 
 <%
+existe_sesion
+
+
 dim op
 dim pagina
 op = CInt(Request.QueryString("Op"))

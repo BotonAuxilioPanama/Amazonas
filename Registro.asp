@@ -8,7 +8,7 @@
 <!-- #include file = "db/conectar.asp"-->
 
 <%
-
+existe_sesion
 dim comp
 dim paginaTit
 comp = CInt(Request.QueryString("Comp"))

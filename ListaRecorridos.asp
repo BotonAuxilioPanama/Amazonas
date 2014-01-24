@@ -6,11 +6,12 @@
 <!-- #include file = "asp/libreria.asp"-->
 <!-- #include file = "db/conectar.asp"-->
 <%
-
+existe_sesion
 
 dim comp
 dim paginaTit
 
+existe_sesion
 comp = CInt(Request.QueryString("Comp"))
 
 Select Case comp

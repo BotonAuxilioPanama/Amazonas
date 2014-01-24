@@ -9,6 +9,7 @@
 <!-- #include file = "asp/libreria.asp"-->
 
 <%
+existe_sesion
 dim comp
 dim paginaTit
 dim fechahoy

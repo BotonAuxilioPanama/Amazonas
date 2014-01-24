@@ -1,4 +1,15 @@
 <!DOCTYPE html>
+<%
+'--------------------------------------------------------------------------
+'         Inclusión del Archivo de Base de Datos
+'--------------------------------------------------------------------------
+%>
+<!-- #include file = "asp/libreria.asp"-->
+<!-- #include file = "db/conectar.asp"-->
+<%
+existe_sesion
+%>
+
 <html lang = "es">
 <head>
   <title>Menu Principal </title>
@@ -80,6 +91,11 @@
              <a class="btn btn-primary btn-lg btn-block btn-lg" href="SelCompetencia.asp?Op=5" role="button">
             <span class="glyphicon glyphicon-chevron-right"></span>
             <span class="justificar">Lista de Recorridos</span>
+          </a>
+
+           <a class="btn btn-primary btn-lg btn-block btn-lg" href="CerrarSesion.asp" role="button">
+            <span class="glyphicon glyphicon-chevron-right"></span>
+            <span class="justificar">Cerrar Sesión</span>
           </a>
 
          

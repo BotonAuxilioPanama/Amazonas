@@ -9,6 +9,11 @@
 dim comp
 dim paginaTit
 dim clase
+
+ dim tempo(4)
+										dim falt(4)
+										dim id(4)
+                                        dim clases(4)
 comp = CInt(Request.QueryString("Comp"))
 
 Select Case comp
@@ -112,55 +117,54 @@ Do While not RsFechas.EOF
 							RsRecorrido.Source = "SELECT Recorridos.idRecorrido, Recorridos.idModalidad, Recorridos.NumRecor, Recorridos.Tiempo, Recorridos.Falta FROM Amazonas INNER JOIN Recorridos ON Amazonas.idAmazona = Recorridos.idAmazona WHERE (((Amazonas.idAmazona)="&RsAmazonas("idAmazona")&") AND ((Recorridos.Fecha)=#"&dia&"/"&mes&"/"&anio&"#)) ORDER BY Recorridos.idModalidad, Recorridos.NumRecor;"
 
 							RsRecorrido.Open, Con
+
+							 for i = 0 to 4 step 1
+                                       	  tempo(i) = 0
+											falt(i) =" "
+											id(i) ="#"
+                                        next
+                                        clases(0) ="success"
+                                        clases(1) ="active"
+                                         clases(2) ="danger"
+                                         clases(3) ="active"
+
 							if not RsRecorrido.EOF then
 							Do While not RsRecorrido.EOF 
 
-									    dim tempo
-										dim falt
-										dim id
-					             for modal = 1 to 2 step 1
 
-					              for recor = 1 to 2 step 1
-									Select Case modal
-										Case 1
-										clase = "success"
-										Case 2
-										clase = "danger"
-										End Select
+                                        if 	RsRecorrido("idModalidad") = 1 and  RsRecorrido("NumRecor") = 1 then
+                                        		tempo(0) =RsRecorrido("Tiempo")
+											falt(0) =RsRecorrido("Falta")
+											id(0) =RsRecorrido("idRecorrido")
+                                            
 
-									if recor = 2 then 
-										clase = "active"
-									end if%>
-										
-                                         <%
-										tempo = 0
-										falt =" "
-										id="#"
-										if RsRecorrido("idModalidad") = modal and RsRecorrido("NumRecor") = recor then
-											tempo =RsRecorrido("Tiempo")
-											falt =RsRecorrido("Falta")
-											id =RsRecorrido("idRecorrido")
-                                            %>
-										<td class="<%=clase%>"><%=tempo%></td>
-										<td class="<%=clase%>"><%=falt%></td>
-										<td class="<%=clase%>"><a href="Editar.asp?id=<%=id%>"><span class="glyphicon glyphicon-edit"> </span></td>
-                                         <%
+                                        elseif 	RsRecorrido("idModalidad") = 1 and  RsRecorrido("NumRecor") = 2 then
+                                        tempo(1) =RsRecorrido("Tiempo")
+											falt(1) =RsRecorrido("Falta")
+											id(1) =RsRecorrido("idRecorrido")
+                                           
 
+                                        elseif 	RsRecorrido("idModalidad") = 2 and  RsRecorrido("NumRecor") = 1 then
 
+                                         tempo(2) =RsRecorrido("Tiempo")
+											falt(2) =RsRecorrido("Falta")
+											id(2) =RsRecorrido("idRecorrido")
+                                           
 
-
-					                     %>
-					                    <% end if%>
-										
-
-					            <%next%>
-					            
-
-					            <%next %>
-							<% 
-
-						   RsRecorrido.MoveNext
+                                        elseif 	RsRecorrido("idModalidad") = 2 and  RsRecorrido("NumRecor") = 2 then
+                                        	 tempo(3) =RsRecorrido("Tiempo")
+											falt(3) =RsRecorrido("Falta")
+											id(3) =RsRecorrido("idRecorrido")
+                                            
+                                      end if
+						    RsRecorrido.MoveNext
 							loop
+							 for j = 0 to 3 step 1%>
+                                  <td class="<%=clases(j)%>"><%=tempo(j)%></td>
+								<td class="<%=clases(j)%>"><%=falt(j)%></td>
+							<td class="<%=clases(j)%>"><a href="Editar.asp?id=<%=id(j)%>"><span class="glyphicon glyphicon-edit"> </span></td>
+                            <% 
+                            next
 							RsRecorrido.Close
 							Else%>
 							 <div class="jumbotron  alert alert-danger">

@@ -13,7 +13,7 @@
 dim comp
 dim paginaTit
 dim cantidad
- dim v 
+dim v 
 comp = CInt(Request.QueryString("Comp"))
 
 

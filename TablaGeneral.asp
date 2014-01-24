@@ -42,7 +42,7 @@ if not RsFechas.EOF then
 Do While not RsFechas.EOF
 %>
 <section class="col-md-12 col-xs-12">
-	<h2>Fecha: <%=FormatDateTime(RsFechas("Fecha"),1)&"----"&FormatDateTime(RsFechas("Fecha"),2) %></h2>
+	<h2>Fecha: <%=FormatDateTime(RsFechas("Fecha"),1) %></h2>
 	
 				
 				<%
@@ -100,8 +100,8 @@ Do While not RsFechas.EOF
 					<td class="active">Tiempo</td>
 					<td class="active">Falta</td>
 					<td class="active"><span class="glyphicon glyphicon-edit"> </span></td>
-				</tr><%
-					Do While not RsAmazonas.EOF %>
+				</tr>
+				<%Do While not RsAmazonas.EOF %>
 
 							<tr>
 							   <td class="active" ><%=cont%></td>
@@ -160,7 +160,7 @@ Do While not RsFechas.EOF
 						    RsRecorrido.MoveNext
 							loop
 							 for j = 0 to 3 step 1%>
-                                  <td class="<%=clases(j)%>"><%=tempo(j)%></td>
+                                  <td class="<%=clases(j)%>"><%=formatnumber(tempo(j),3)%></td>
 								<td class="<%=clases(j)%>"><%=falt(j)%></td>
 							<td class="<%=clases(j)%>"><a href="Editar.asp?id=<%=id(j)%>"><span class="glyphicon glyphicon-edit"> </span></td>
                             <% 

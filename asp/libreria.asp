@@ -66,7 +66,7 @@ set Con = Server.CreateObject("ADODB.CONNECTION")
 Con.Open = STRCONEXION
 
 Set RsPersonas = Server.CreateObject("ADODB.RECORDSET")
-RsPersonas.Source = "SELECT Amazonas.* FROM (Competencia INNER JOIN Equipos ON Competencia.idCompetencia = Equipos.idCompetencia) INNER JOIN Amazonas ON Equipos.idEquipo = Amazonas.idEquipo WHERE (((Competencia.idCompetencia)= "& comp &"));"
+RsPersonas.Source = "SELECT Amazonas.* FROM (Competencia INNER JOIN Equipos ON Competencia.idCompetencia = Equipos.idCompetencia) INNER JOIN Amazonas ON Equipos.idEquipo = Amazonas.idEquipo WHERE (((Competencia.idCompetencia)= "& comp &")) order by Amazonas.Nombre ASC  ;"
 RsPersonas.Open, Con
 if not RsPersonas.EOF then
 Do While not RsPersonas.EOF
@@ -105,17 +105,19 @@ if not RsPersonas.EOF then
 Do While not RsPersonas.EOF
 Select Case pos
 Case 1
-color = "success"
+color = "label-success"
 Case 2
-color = "warning"
+color = "label-warning"
 Case 3
-color = "danger"
+color = "label-danger"
+case Else
+color = "active"
 End Select
 
 %>
 
  <tr class="<%=color%>">
-    <td><%=pos%></td> <td><%=RsPersonas("Nombre")&" "&RsPersonas("Apellido")%></td> <td><%=RsPersonas("Equipo")%></td> <td><%=RsPersonas("Promedio")%></td>
+    <td><%=pos%></td> <td><%=RsPersonas("Nombre")&" "&RsPersonas("Apellido")%></td> <td><%=RsPersonas("Equipo")%></td> <td><%=formatnumber(RsPersonas("Promedio"),3)%></td>
   </tr>
 
 <%
@@ -157,17 +159,19 @@ if not RsPersonas.EOF then
 Do While not RsPersonas.EOF
 Select Case pos
 Case 1
-color = "success"
+color = "label-success"
 Case 2
-color = "warning"
+color = "label-warning"
 Case 3
-color = "danger"
+color = "label-danger"
+case Else
+color = "active"
 End Select
 
 %>
 
  <tr class="<%=color%>">
-    <td><%=pos%></td> <td><%=RsPersonas("Nombre")&" "&RsPersonas("Apellido")%></td> <td><%=RsPersonas("Equipo")%></td> <td><%=RsPersonas("Promedio")%></td>
+    <td><%=pos%></td> <td><%=RsPersonas("Nombre")&" "&RsPersonas("Apellido")%></td> <td><%=RsPersonas("Equipo")%></td> <td><%=formatnumber(RsPersonas("Promedio"),3)%></td>
   </tr>
 
 <%
@@ -209,17 +213,19 @@ if not RsPersonas.EOF then
 Do While not RsPersonas.EOF
 Select Case pos
 Case 1
-color = "success"
+color = "label-success"
 Case 2
-color = "warning"
+color = "label-warning"
 Case 3
-color = "danger"
+color = "label-danger"
+case Else
+color = "active"
 End Select
 
 %>
 
  <tr class="<%=color%>">
-    <td><%=pos%></td> <td><%=RsPersonas("Equipo")%></td> <td><%=RsPersonas("Promedio")%></td>
+    <td><%=pos%></td> <td><%=RsPersonas("Equipo")%></td> <td><%=formatnumber(RsPersonas("Promedio"),3)%></td>
   </tr>
 
 <%
@@ -274,7 +280,7 @@ End Select
 %>
 
  <tr class="<%=color%>">
-    <td><%=pos%></td> <td><%=RsPersonas("Nombre")&" "&RsPersonas("Apellido")%></td> <td><%=RsPersonas("Equipo")%></td> <td><%=RsPersonas("Promedio")%></td>
+    <td><%=pos%></td> <td><%=RsPersonas("Nombre")&" "&RsPersonas("Apellido")%></td> <td><%=RsPersonas("Equipo")%></td> <td><%=formatnumber(RsPersonas("Promedio"),3)%></td>
   </tr>
 
 <%
@@ -315,12 +321,13 @@ if not RsPersonas.EOF then
 
 Do While not RsPersonas.EOF
 Select Case pos
+
 Case 1
-color = "success"
+color = "label-success"
 Case 2
-color = "warning"
+color = "label-warning"
 Case 3
-color = "danger"
+color = "label-danger"
 case Else
 color = "active"
 End Select
@@ -329,7 +336,7 @@ End Select
 %>
 
  <tr class="<%=color%>">
-    <td><%=pos%></td> <td><%=RsPersonas("Nombre")&" "&RsPersonas("Apellido")%></td> <td><%=RsPersonas("Equipo")%></td> <td><%=RsPersonas("Promedio")%></td>
+    <td><%=pos%></td> <td><%=RsPersonas("Nombre")&" "&RsPersonas("Apellido")%></td> <td><%=RsPersonas("Equipo")%></td> <td><%=formatnumber(RsPersonas("Promedio"),3)%></td>
   </tr>
 
 <%
@@ -371,11 +378,11 @@ if not RsPersonas.EOF then
 Do While not RsPersonas.EOF
 Select Case pos
 Case 1
-color = "success"
+color = "label-success"
 Case 2
-color = "warning"
+color = "label-warning"
 Case 3
-color = "danger"
+color = "label-danger"
 case Else
 color = "active"
 End Select
@@ -385,7 +392,7 @@ End Select
 %>
 
  <tr class="<%=color%>">
-    <td><%=pos%></td> <td><%=RsPersonas("Equipo")%></td> <td><%=RsPersonas("Promedio")%></td>
+    <td><%=pos%></td> <td><%=RsPersonas("Equipo")%></td> <td><%=formatnumber(RsPersonas("Promedio"),3)%></td>
   </tr>
 
 <%
@@ -404,5 +411,123 @@ Else%>
 <%End IF
 
 end Function
+
+<!-- Funciones de Ranking Diarios ---------------------------------------------------------------------------------------------->
+
+Function MejorTiempoDia(fecha)
+set Con = Server.CreateObject("ADODB.CONNECTION")
+Con.Open = STRCONEXION
+
+Set RsPersonas = Server.CreateObject("ADODB.RECORDSET")
+RsPersonas.Source = "SELECT TOP 5 Amazonas.Nombre, Amazonas.Apellido, Equipos.Nombre AS Equipo, Min([Recorridos].[Tiempo]+[Recorridos].[Falta]) AS Promedio FROM Modalidad INNER JOIN (Equipos INNER JOIN (Amazonas INNER JOIN Recorridos ON Amazonas.idAmazona = Recorridos.idAmazona) ON Equipos.idEquipo = Amazonas.idEquipo) ON Modalidad.idModalidad = Recorridos.idModalidad GROUP BY Amazonas.Nombre, Amazonas.Apellido, Equipos.Nombre, Equipos.idCompetencia, Recorridos.Fecha HAVING (((Equipos.idCompetencia)=1) AND ((Recorridos.Fecha)=#"& fecha &"#)) ORDER BY Min([Recorridos].[Tiempo]+[Recorridos].[Falta]);"
+RsPersonas.Open, Con
+dim pos     
+dim color
+pos = 1
+if not RsPersonas.EOF then
+
+%>
+ <table class="table table-condensed">
+                 <tr class="active">
+                   <th >#</th> <th >Amazona</th> <th >Equipo</th> <th >Tiempo</th>
+                 </tr>
+
+<%
+
+Do While not RsPersonas.EOF
+Select Case pos
+Case 1
+color = "label-success"
+Case 2
+color = "label-warning"
+Case 3
+color = "label-danger"
+Case 4
+color = "label-info"
+case Else
+color = "active"
+End Select
+
+%>
+
+ <tr class="<%=color%>">
+    <td><%=pos%></td> <td><%=RsPersonas("Nombre")&" "&RsPersonas("Apellido")%></td> <td><%=RsPersonas("Equipo")%></td> <td><%=formatnumber(RsPersonas("Promedio"),3)%></td>
+  </tr>
+
+<%
+pos = pos + 1
+RsPersonas.MoveNext
+Loop
+%>
+</table>
+<%
+RsPersonas.Close
+Else%>
+       <div class="jumbotron  alert alert-danger">
+      <h1><span class="glyphicon glyphicon-remove-circle"> </span>Upps</h1>
+    <p>No hay datos Registrados para esta Categoria. </p>
+    </div>
+<%End IF
+
+end Function
+
+
+Function MejorTiempoDiaInter(fecha)
+set Con = Server.CreateObject("ADODB.CONNECTION")
+Con.Open = STRCONEXION
+
+Set RsPersonas = Server.CreateObject("ADODB.RECORDSET")
+RsPersonas.Source = "SELECT TOP 5 Amazonas.Nombre, Amazonas.Apellido, Equipos.Nombre AS Equipo, Min([Recorridos].[Tiempo]+[Recorridos].[Falta]) AS Promedio FROM Modalidad INNER JOIN (Equipos INNER JOIN (Amazonas INNER JOIN Recorridos ON Amazonas.idAmazona = Recorridos.idAmazona) ON Equipos.idEquipo = Amazonas.idEquipo) ON Modalidad.idModalidad = Recorridos.idModalidad GROUP BY Amazonas.Nombre, Amazonas.Apellido, Equipos.Nombre, Equipos.idCompetencia, Recorridos.Fecha HAVING (((Equipos.idCompetencia)=2) AND ((Recorridos.Fecha)=#"& fecha &"#)) ORDER BY Min([Recorridos].[Tiempo]+[Recorridos].[Falta]);"
+RsPersonas.Open, Con
+dim pos     
+dim color
+pos = 1
+if not RsPersonas.EOF then
+
+%>
+ <table class="table table-condensed">
+                 <tr class="active">
+                   <th >#</th> <th >Amazona</th> <th >Equipo</th> <th >Tiempo</th>
+                 </tr>
+
+<%
+
+Do While not RsPersonas.EOF
+Select Case pos
+Case 1
+color = "label-success"
+Case 2
+color = "label-warning"
+Case 3
+color = "label-danger"
+Case 4
+color = "label-info"
+case Else
+color = "active"
+End Select
+
+%>
+
+ <tr class="<%=color%>">
+    <td><%=pos%></td> <td><%=RsPersonas("Nombre")&" "&RsPersonas("Apellido")%></td> <td><%=RsPersonas("Equipo")%></td> <td><%=formatnumber(RsPersonas("Promedio"),3)%></td>
+  </tr>
+
+<%
+pos = pos + 1
+RsPersonas.MoveNext
+Loop
+%>
+</table>
+<%
+RsPersonas.Close
+Else%>
+       <div class="jumbotron  alert alert-danger">
+      <h1><span class="glyphicon glyphicon-remove-circle"> </span>Upps</h1>
+    <p>No hay datos Registrados para esta Categoria. </p>
+    </div>
+<%End IF
+
+end Function
+
 
 %>

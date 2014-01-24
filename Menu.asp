@@ -64,12 +64,22 @@
             <span class="glyphicon glyphicon-chevron-right"></span>Ver Ranking
           </a>
 
-          <a class="btn btn-primary btn-lg btn-block btn-lg" href="RankingDia.asp" role="button">
+          <a class="btn btn-primary btn-lg btn-block btn-lg" href="SelFecha.asp" role="button">
             <span class="glyphicon glyphicon-chevron-right"></span>Mejor por Fecha
           </a>
 
            <a class="btn btn-primary btn-lg btn-block btn-lg" href="RankingGlobal.asp" role="button">
             <span class="glyphicon glyphicon-chevron-right"></span>Ver Ranking Global
+          </a>
+
+           <a class="btn btn-primary btn-lg btn-block btn-lg" href="SelCompetencia.asp?Op=4" role="button">
+            <span class="glyphicon glyphicon-chevron-right"></span>
+            <span class="justificar">ver Tabla Detallada por Fecha</span>
+          </a>
+
+             <a class="btn btn-primary btn-lg btn-block btn-lg" href="SelCompetencia.asp?Op=5" role="button">
+            <span class="glyphicon glyphicon-chevron-right"></span>
+            <span class="justificar">Lista de Recorridos</span>
           </a>
 
          

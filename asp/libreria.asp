@@ -1,21 +1,19 @@
 <%
-function cuentaFechas()
-  Set RsFechas = Server.CreateObject("ADODB.RECORDSET")
-          RsFechas.Source = "SELECT Recorridos.Fecha FROM Modalidad INNER JOIN Recorridos ON Modalidad.idModalidad = Recorridos.idModalidad WHERE (((Modalidad.idModalidad)=1)) GROUP BY Recorridos.Fecha, Recorridos.Fecha ORDER BY Recorridos.Fecha; "
-          RsFechas.Open, Con
-dim cant_fechas
- cant_fechas = 0
-          if not RsFechas.EOF then
-            
-            cant_fechas = 1
-            do While not RsFechas.EOF
-                cant_fechas = cant_fechas +1
-            Loop
-            RsFechas.Close
-          end if
+function getRecorrido(idAmazona, idModalidad, fecha, recorrido)
+  Set Rs = Server.CreateObject("ADODB.RECORDSET")
+  dim sql
+  sql = "SELECT Recorridos.idRecorrido, Recorridos.Tiempo, Recorridos.Falta FROM Recorridos WHERE (((Recorridos.idAmazona)="& idAmazona &") AND ((Recorridos.idModalidad)="& idModalidad&") AND ((Recorridos.NumRecor)="& recorrido&") AND ((Recorridos.Fecha)=#"& fecha &"#));"
 
-          return cant_fechas
-end function
+          Rs.Source = sql
+          Rs.Open, Con
+          
+          dim ecorrido 'Arreglo de recorridos'
+         getRecorrido = Rs.GetRows
+         'ecorrido = Rs.GetRows
+          Rs.Close
+
+
+  end function
 
 <!-- Sesiones y Usuarios ---------------------------------------------------------------------------------------------->
 

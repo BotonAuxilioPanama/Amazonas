@@ -25,7 +25,7 @@ pagina = "RegistroTiempo.asp"
 Case 3
 pagina = "RegOrden.asp"
 Case 4
-pagina = "TablaGeneral.asp"
+pagina = "TablaFecha.asp"
 Case 5
 pagina = "ListaRecorridos.asp"
 Case 6

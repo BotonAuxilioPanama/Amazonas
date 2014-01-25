@@ -58,7 +58,7 @@ Do While not RsFechas.EOF
 					Con.Open = STRCONEXION
 
 					Set RsAmazonas = Server.CreateObject("ADODB.RECORDSET")
-					RsAmazonas.Source = "SELECT Amazonas.idAmazona, Amazonas.Nombre, Amazonas.Apellido, Equipos.Nombre AS Equipo FROM ((Competencia INNER JOIN Equipos ON Competencia.idCompetencia = Equipos.idCompetencia) INNER JOIN Amazonas ON Equipos.idEquipo = Amazonas.idEquipo) INNER JOIN Recorridos ON Amazonas.idAmazona = Recorridos.idAmazona WHERE (((Competencia.idCompetencia)=1) AND ((Recorridos.Fecha)=#"&dia&"/"&mes&"/"&anio&"#)) Group BY Amazonas.idAmazona, Amazonas.Nombre, Amazonas.Apellido,Equipos.Nombre ORDER BY Equipos.Nombre, Amazonas.Apellido ;"
+					RsAmazonas.Source = "SELECT Amazonas.idAmazona, Amazonas.Nombre, Amazonas.Apellido, Equipos.Nombre AS Equipo FROM ((Competencia INNER JOIN Equipos ON Competencia.idCompetencia = Equipos.idCompetencia) INNER JOIN Amazonas ON Equipos.idEquipo = Amazonas.idEquipo) INNER JOIN Recorridos ON Amazonas.idAmazona = Recorridos.idAmazona WHERE (((Competencia.idCompetencia)="&comp&") AND ((Recorridos.Fecha)=#"&dia&"/"&mes&"/"&anio&"#)) Group BY Amazonas.idAmazona, Amazonas.Nombre, Amazonas.Apellido,Equipos.Nombre ORDER BY Equipos.Nombre, Amazonas.Apellido ;"
 
 					RsAmazonas.Open, Con
 					if not RsAmazonas.EOF then

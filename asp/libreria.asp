@@ -1,4 +1,36 @@
 <%
+
+
+function getSumaModal(fecha1, fecha2, idModalidad, idAmazona)
+  Set Rs = Server.CreateObject("ADODB.RECORDSET")
+  dim sql
+  sql = "SELECT sum(Recorridos.Tiempo + Recorridos.Falta) as Suma FROM Modalidad INNER JOIN (Amazonas INNER JOIN Recorridos ON Amazonas.idAmazona = Recorridos.idAmazona) ON Modalidad.idModalidad = Recorridos.idModalidad WHERE (((Modalidad.idModalidad)="&idModalidad&") AND ((Amazonas.idAmazona)="& idAmazona&")) AND ( Recorridos.Fecha Between #"&fecha1&"# And #"&fecha2&"#);"
+
+          Rs.Source = sql
+          Rs.Open, Con
+          
+          dim ecorrido(0,0) 'Arreglo de recorridos'
+          ecorrido(0,0)=0
+           if not Rs.EOF then
+         getSumaModal = Rs.GetRows
+         Rs.Close
+         else
+         getRecorrido ecorrido
+         end if 
+end function
+
+
+function error()%>
+  <div class="jumbotron  alert alert-danger">
+    <h1>
+        <span class="glyphicon glyphicon-remove-circle"></span>Upps</h1>
+    <p>
+        No hay datos Registrados .
+    </p>
+</div>
+<%end function
+
+
 function getRecorrido(idAmazona, idModalidad, fecha, recorrido)
   Set Rs = Server.CreateObject("ADODB.RECORDSET")
   dim sql
@@ -7,12 +39,17 @@ function getRecorrido(idAmazona, idModalidad, fecha, recorrido)
           Rs.Source = sql
           Rs.Open, Con
           
-          dim ecorrido 'Arreglo de recorridos'
+          dim ecorrido(2,0) 'Arreglo de recorridos'
+          ecorrido(0,0)=0
+          ecorrido(1,0)=0
+          ecorrido(2,0)=0
+        if not Rs.EOF then
          getRecorrido = Rs.GetRows
-         'ecorrido = Rs.GetRows
-          Rs.Close
-
-
+         Rs.Close
+         else
+         getRecorrido ecorrido
+         end if 
+        
   end function
 
 <!-- Sesiones y Usuarios ---------------------------------------------------------------------------------------------->

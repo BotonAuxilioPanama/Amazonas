@@ -13,6 +13,7 @@ dim tempo(4)
 dim falt(4)
 dim id(4)
 dim clases(4)
+dim clas
 comp = CInt(Request.QueryString("Comp"))
 
 Select Case comp
@@ -22,7 +23,7 @@ Case 2
 paginaTit = "Competencia Internacional"
 End Select
 
-cabecera "Tabla General", paginaTit
+cabecera "Tabla Por Modalidadd", paginaTit
 
 
 
@@ -30,11 +31,13 @@ set Con = Server.CreateObject("ADODB.CONNECTION")
 Con.Open = STRCONEXION
 
 Set RsModal = Server.CreateObject("ADODB.RECORDSET")
-RsModal.Source = "SELECT Modalidad.* FROM Modalidad;" 
+RsModal.Source = "SELECT Modalidad.* FROM Modalidad order by Modalidad.Nombre ASC;" 
 RsModal.Open, Con
 
 'matriz con las modalidades'
 dim modalidades
+
+if not RsModal.EOF then
 modalidades = RsModal.GetRows '0--> id, 1--> Modlidad '
 RsModal.Close
 
@@ -59,6 +62,8 @@ for g = 0 to UBound(modalidades,2)
 
 					RsAmazonas.Open, Con
 					dim Amazonas 
+
+					if not RsAmazonas.EOF then 
 					Amazonas = RsAmazonas.GetRows
 					RsAmazonas.Close
 
@@ -70,6 +75,7 @@ for g = 0 to UBound(modalidades,2)
 					
 
 					dim fechas 'Arreglo de fechas'
+					if not RsFechas.EOF then 
 					fechas = RsFechas.GetRows
 					RsFechas.Close
 					
@@ -87,27 +93,45 @@ for g = 0 to UBound(modalidades,2)
 							<th rowspan="3 text-center">Amazona</th>
 							<th rowspan="3 text-center">Equipo</th>
 					<%
-					for h = 0 to UBound(fechas,2) step 1 %>
-                        <th colspan="6" class="success text-center"><%=FormatDateTime(fechas(0,h),1)%></th>
+					for h = 0 to UBound(fechas,2) step 1 
+							if h mod 2 = 0 then
+								clas = "success"
+								else 
+								clas = "danger"
+							end if%>
+
+                        <th colspan="6" class="<%=clas%> text-center"><%=FormatDateTime(fechas(0,h),1)%></th>
 					<%next
 					%>
+					<th rowspan="3 text-center">Total</th>
 					</tr>
 
 				<tr>
-				<%for y = 0 to UBound(fechas,2) step 1 %>
-					<td colspan="3" class="success text-center">Recorrido 1</td>
+				<%for y = 0 to UBound(fechas,2) step 1 
+							if y mod 2 = 0 then
+								clas = "success"
+								else 
+								clas = "danger"
+							end if%>
+
+					<td colspan="3" class="<%=clas%> text-center">Recorrido 1</td>
 					<td colspan="3" class="active text-center">Recorrido 2</td>
 				<%next%>
-
+					
 					
 				</tr>
 
 				<tr>
-                <%for k = 0 to UBound(fechas,2) step 1 %>
-					<td class="success text-center">Tiempo</td>
-					<td class="success text-center">Falta</td>
-					<td class="success text-center"><span class="glyphicon glyphicon-edit"> </span></td>
-
+                <%for k = 0 to UBound(fechas,2) step 1 
+                	if k mod 2 = 0 then
+								clas = "success"
+								else 
+								clas = "danger"
+							end if
+                        %>
+					<td class="<%=clas%> text-center">Tiempo</td>
+					<td class="<%=clas%>  text-center">Falta</td>
+					<td class="<%=clas%>  text-center"><span class="glyphicon glyphicon-edit"> </span></td>
 
 					<td class="active text-center">Tiempo</td>
 					<td class="active text-center">Falta</td>
@@ -123,12 +147,19 @@ for g = 0 to UBound(modalidades,2)
 						
 
 						
-					<%for f = 0 to UBound(fechas,2) step 1 %>
+					<%for f = 0 to UBound(fechas,2) step 1 
+						if f mod 2 = 0 then
+								clas = "success"
+								else 
+								clas = "danger"
+							end if
+					%>
                        	<%for recor = 1 to 2 step 1 %>
 							<%dim Recorrido
 							dim fecha
-							dim clas
+							if recor = 2 then
 							clas = "active"
+							end if 
 							dia = DAY(fechas(0,f))
 					        mes = MONTH(fechas(0,f))
 					        anio= YEAR(fechas(0,f))
@@ -143,24 +174,64 @@ for g = 0 to UBound(modalidades,2)
 								<td class="<%=clas%> text-center"><a href="Editar.asp?id=<%=Recorrido(0,0)%>"><span class="glyphicon glyphicon-edit"> </span></td>
 								
 							<%else%>
-								<td class="<%=clas%>">c</td>
+								<td class="<%=clas%>"></td>
 								<td class="<%=clas%>"></td>
 								<td class="<%=clas%>"></td>
 							<%end if%>
 							
 							<%next%>
-					<%next%>
+					<%next 'for de fechas
+					''espacio para calcular el total por amazona por modalidad
+						dim limFecha
+						limFecha = UBound(fechas,2)
+						dim fecha1
+						dim fecha2
 
+						dia = DAY(fechas(0,0))
+					    mes = MONTH(fechas(0,0))
+					    anio= YEAR(fechas(0,0))
+					    fecha1 = dia&"/"&mes&"/"&anio
+
+					    dia = DAY(fechas(0,limFecha))
+					    mes = MONTH(fechas(0,limFecha))
+					    anio= YEAR(fechas(0,limFecha))
+					    fecha2 = dia&"/"&mes&"/"&anio
+					    dim tot
+
+					    tot = getSumaModal(fecha1, fecha2, idMod, Amazonas(0,n))
+					    if UBound(tot, 2) >= 0 then%>
+					    	<td class="<%=clas%> text-center"><%=formatnumber(tot(0,0),3)%></td>
+					    	<%else%>
+					    		<td class="<%=clas%>">=(</td>
+					    	<%'imprime'
+					    end if 
+					%>
+
+					
 					</tr>
-				<%next%>
+				<%next 'for de amazonas%>
 				
 
-				<%End IF 'fin de if para ver si hay amazonas%> 
+				<% else
+							error
+							end if 'de RsFechas
+					
+
+				End IF 'fin de if para ver si hay amazonas
+
+				else
+							error
+				end if 'de RsAmazonas
+			%> 
 				
 			</table>
 		</article>
 </section>
 <%
 next 'for de modalidades'
+else
+		error
+end if 'de verificcion de rsModal'
+
 	piePag()
 %>

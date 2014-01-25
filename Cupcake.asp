@@ -6,7 +6,7 @@
 <!-- #include file = "asp/libreria.asp"-->
 <!-- #include file = "db/conectar.asp"-->
 <%
-cabecera("Prueba de Plantilla </h3> <h3>Hola que ase")
+cabecera "Prueba de Plantilla", "Hola que ase"
 
 
 %>

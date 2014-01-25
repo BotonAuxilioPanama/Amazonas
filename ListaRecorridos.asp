@@ -20,7 +20,7 @@ paginaTit = "Competencia Nacional"
 Case 2
 paginaTit = "Competencia Internacional"
 End Select
-cabecera("Lista de Recorridos </h3> <h3>"&paginaTit)
+cabecera "Lista de Recorridos", paginaTit
 
 
 %>

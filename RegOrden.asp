@@ -77,7 +77,7 @@ end if
       
 
        <section class="col-md-12">
-        <form class="form-horizontal col-md-10 col-md-offset-2" role="form">
+        <form class="form-horizontal col-md-10 col-md-offset-2" role="form" method="post" action="GuardarOrdenRecorrido.asp?cant=<%=cantidad%>&Comp=<%=comp%>">
 
             
             <% 

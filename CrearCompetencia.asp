@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang = "es">
 <head>
-  <title>Crear Equipo </title>
+  <title>Crear Competencia </title>
 
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -27,30 +27,39 @@
       <div class="container">
       <header class="page-header">
         <h1 >Encuentro de Amazonas 2014 <br> <small>Feria de Sona, Veraguas</small></h1>
-        <h3 >Formulario de Creación de Equipos</h3> 
+        <h3 >Formulario de Creación de Competencia</h3> 
       </header>
         
          <section class="col-md-12">
             <br>
-            <form class="form-horizontal col-md-8 col-md-offset-2" role="form">
+            <form class="form-horizontal col-md-8 col-md-offset-2" role="form" method="post" action="GuardarCompetencia.asp">
               <div class="form-group">
-                <label for="nombre" class="col-lg-2 control-label">Nombre</label>
+                <label for="nombre" class="col-lg-2 control-label">Nombre de la Competencia</label>
                 <div class="col-lg-10">
-                  <input type="text" class="form-control" id="nombre"
-                  placeholder="Nombre del Equipo" required>
+                  <input type="text" class="form-control" id="nombre" name="nombre"
+                  placeholder="Nombre de la Competencia" required>
                 </div>
               </div>
 
 
               <div class="form-group">
-                <label for="competencia" class="col-lg-2 control-label">Competencia</label>
-                <div class="col-lg-10">
-                  <select class="form-control" id="competencia">
-                    <option>Nacional</option>
-                    <option>Internacional</option>
-                   </select>
+                <label for="fechaIni" class="col-md-2 control-label">Fecha Inicial</label>
+                <div class="col-md-6">
+                  <input type="date" class="form-control" id="fechaIni" name="fechaIni"
+                  placeholder="Fecha Inicial" required>
                 </div>
               </div>
+
+
+               <div class="form-group">
+                <label for="fechaFin" class="col-md-2 control-label">Fecha Final</label>
+                <div class="col-md-6">
+                  <input type="date"  class="form-control" id="fechaFin" name="fechaFin"
+                  placeholder="Fecha Final" required>
+                </div>
+              </div>
+
+
 
               <div class="form-group">
                 <div class="col-lg-offset-2 col-lg-10">

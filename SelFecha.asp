@@ -6,7 +6,7 @@
 <!-- #include file = "asp/libreria.asp"-->
 <!-- #include file = "db/conectar.asp"-->
 <%
-cabecera("Selecione la Fecha deseada")
+cabecera "Selecione la Fecha deseada", "Ranking Diario"
 
 set Con = Server.CreateObject("ADODB.CONNECTION")
 Con.Open = STRCONEXION

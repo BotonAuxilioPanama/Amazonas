@@ -1,4 +1,22 @@
 <%
+function cuentaFechas()
+  Set RsFechas = Server.CreateObject("ADODB.RECORDSET")
+          RsFechas.Source = "SELECT Recorridos.Fecha FROM Modalidad INNER JOIN Recorridos ON Modalidad.idModalidad = Recorridos.idModalidad WHERE (((Modalidad.idModalidad)=1)) GROUP BY Recorridos.Fecha, Recorridos.Fecha ORDER BY Recorridos.Fecha; "
+          RsFechas.Open, Con
+dim cant_fechas
+ cant_fechas = 0
+          if not RsFechas.EOF then
+            
+            cant_fechas = 1
+            do While not RsFechas.EOF
+                cant_fechas = cant_fechas +1
+            Loop
+            RsFechas.Close
+          end if
+
+          return cant_fechas
+end function
+
 <!-- Sesiones y Usuarios ---------------------------------------------------------------------------------------------->
 
 function existe_sesion()
@@ -10,7 +28,7 @@ End If
 end function
 
 <!-- Interfase ---------------------------------------------------------------------------------------------->
-sub cabecera(nombre)
+sub cabecera(nombre, subt)
 existe_sesion
 %>
 <!DOCTYPE html>
@@ -43,6 +61,7 @@ existe_sesion
       <header class="page-header">
         <h1 >Encuentro de Amazonas 2014 <br> <small>Feria de Sona, Veraguas </small></h1>
         <h3 ><%=nombre%></h3> 
+         <h3 ><%=subt%></h3>
       </header>
 <%
 end sub 
@@ -89,6 +108,20 @@ Else%>
 <option value ="0">Debe Registar Amazonas</option>
 <%End IF
 end Function
+<!-- Almacenar Orden de Amazonas--------------------------------------------------------------------------------------------->
+
+Function guardarOrden(idAmazona, pos)
+ set Con = Server.CreateObject("ADODB.CONNECTION")
+     Con.Open = STRCONEXION
+     
+     Set RsAmazona = Server.CreateObject("ADODB.RECORDSET")
+     
+     RsAmazona.Source = "Insert Into Orden ( idAmazona  ,  Posicion ) Values ("& idAmazona &", "& pos &");"
+
+      RsAmazona.Open, Con 
+
+
+End Function 
 
 <!-- Funciones de Ranking Ganadores--------------------------------------------------------------------------------------------->
 

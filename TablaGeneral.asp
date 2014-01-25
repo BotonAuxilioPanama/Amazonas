@@ -22,7 +22,7 @@ Case 2
 paginaTit = "Competencia Internacional"
 End Select
 
-cabecera("Tabla General </h3> <h3>"&paginaTit)
+cabecera"Tabla General" ,paginaTit
 
 
 

@@ -44,11 +44,11 @@ existe_sesion
       <section class="col-md-6 col-xs-12 col-md-offset-3">
 
 
-           <a class="btn btn-primary btn-lg btn-block btn-lg" href="CrearCompetencia.html" role="button">
+           <a class="btn btn-primary btn-lg btn-block btn-lg" href="CrearCompetencia.asp" role="button">
             <span class="glyphicon glyphicon-chevron-right"></span>Nueva Competencia
           </a>
 
-           <a class="btn btn-primary btn-lg btn-block btn-lg" href="CrearEquipo.html" role="button">
+           <a class="btn btn-primary btn-lg btn-block btn-lg" href="CrearEquipo.asp" role="button">
             <span class="glyphicon glyphicon-chevron-right"></span>Nuevo Equipo
           </a>
 
@@ -85,12 +85,21 @@ existe_sesion
 
            <a class="btn btn-primary btn-lg btn-block btn-lg" href="SelCompetencia.asp?Op=4" role="button">
             <span class="glyphicon glyphicon-chevron-right"></span>
-            <span class="justificar">ver Tabla Detallada por Fecha</span>
+            <span class="justificar">Tabla Detallada por Fecha</span>
+          </a>
+
+          <a class="btn btn-primary btn-lg btn-block btn-lg" href="SelCompetencia.asp?Op=7" role="button">
+            <span class="glyphicon glyphicon-chevron-right"></span>
+            <span class="justificar">Tabla por Modalidad</span>
           </a>
 
              <a class="btn btn-primary btn-lg btn-block btn-lg" href="SelCompetencia.asp?Op=5" role="button">
             <span class="glyphicon glyphicon-chevron-right"></span>
             <span class="justificar">Lista de Recorridos</span>
+          </a>
+            <a class="btn btn-primary btn-lg btn-block btn-lg" href="SelCompetencia.asp?Op=6" role="button">
+            <span class="glyphicon glyphicon-chevron-right"></span>
+            <span class="justificar">Orden de Recorrido</span>
           </a>
 
            <a class="btn btn-primary btn-lg btn-block btn-lg" href="CerrarSesion.asp" role="button">

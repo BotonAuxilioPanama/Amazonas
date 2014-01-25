@@ -28,6 +28,10 @@ Case 4
 pagina = "TablaGeneral.asp"
 Case 5
 pagina = "ListaRecorridos.asp"
+Case 6
+pagina = "VerOrdenRecorrido.asp"
+Case 7
+pagina = "TablaModal.asp"
 Case Else
 pagina = "Menu.asp"
 End Select

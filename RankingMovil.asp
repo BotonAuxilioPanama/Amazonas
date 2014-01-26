@@ -17,7 +17,7 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Login del Sistema">
+  <meta name="description" content="Ranking">
   <meta name="author" content="@jockrlos22">
 
 
@@ -38,8 +38,8 @@
         <div class="container">
 
           <header class="page-header">
-            <h1>Encuentro de Amazonas 2014 <br> <small>Feria de Sona, Veraguas</small></h1>
-            <h3>Resultados Por Competencias</h3> 
+            <h1>Encuentro de Amazonas 2014 <br> <small class="hidden-xs">Feria de Sona, Veraguas</small></h1>
+            <h3 class="hidden-xs">Resultados Por Competencias</h3> 
           </header>
 
           <div class="row"> 

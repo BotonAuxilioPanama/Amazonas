@@ -76,7 +76,7 @@ end if
   <div class="container alert alert-danger">
     <h1><span class="glyphicon glyphicon-remove-circle"> </span>Error</h1>
     <p>Ha ocurrido un problema durante la relización del procedimiento. Por favor regrese e intentelo de nuevo. </p>
-    <p><a class="btn btn-primary btn-lg" role="button"><span class="glyphicon glyphicon-circle-arrow-left">  </span> Regresar</a>
+    <p><a class="btn btn-primary btn-lg" role="button" href="javascript:window.history.back();"><span class="glyphicon glyphicon-circle-arrow-left">  </span> Regresar</a>
      <a class="btn btn-primary btn-lg" role="button" href="Menu.asp"><span class="glyphicon glyphicon-align-justify">  </span>   Menu Principal</a>  
     <button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
   Detalles de Error

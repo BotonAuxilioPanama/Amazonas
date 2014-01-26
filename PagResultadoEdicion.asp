@@ -49,7 +49,7 @@ End Select
   <div class="container alert alert-danger">
     <h1><span class="glyphicon glyphicon-remove-circle"> </span>Error</h1>
     <p>El <strong><%=msgError%></strong> No se realizó correctamente por favor intente de nuevo.</p>
-    <p>
+    <p><a class="btn btn-primary btn-lg" role="button" href="javascript:window.history.back();"><span class="glyphicon glyphicon-circle-arrow-left">  </span> Regresar</a>
      <a class="btn btn-primary btn-lg" role="button" href="Menu.asp"><span class="glyphicon glyphicon-align-justify">  </span>   Menu Principal</a>  
     
  

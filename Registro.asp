@@ -6,7 +6,7 @@
 '--------------------------------------------------------------------------
 %>
 <!-- #include file = "db/conectar.asp"-->
-
+<!-- #include file = "asp/libreria.asp"-->
 <%
 existe_sesion
 dim comp

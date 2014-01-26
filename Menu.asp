@@ -103,7 +103,7 @@ existe_sesion
           </a>
 
            <a class="btn btn-primary btn-lg btn-block btn-lg" href="CerrarSesion.asp" role="button">
-            <span class="glyphicon glyphicon-chevron-right"></span>
+            <span class="glyphicon glyphicon-log-out"></span>
             <span class="justificar">Cerrar Sesión</span>
           </a>
 

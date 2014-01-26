@@ -135,41 +135,62 @@ existe_sesion
       <span class="icon-bar"></span>
       <span class="icon-bar"></span>
     </button>
-    <a class="navbar-brand" href="#">Brand</a>
+    <a class="navbar-brand">Amazonas 2014</a>
   </div>
 
   <!-- Collect the nav links, forms, and other content for toggling -->
   <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
     <ul class="nav navbar-nav">
-      <li class="active"><a href="#">Link</a></li>
-      <li><a href="menu.asp" ><span class="glyphicon glyphicon-arrow-left"></span>Menu</a></li>
+      <li><a href="menu.asp" ><span class="glyphicon glyphicon-align-justify"></span>&nbsp;Menu</a></li>
       <li class="dropdown">
-        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Enlace 1 <b class="caret"></b></a>
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Crear<b class="caret"></b></a>
         <ul class="dropdown-menu">
-          <li><a href="#">Action</a></li>
-          <li><a href="#">Another action</a></li>
-          <li><a href="#">Something else here</a></li>
+          <li><a href="CrearCompetencia.asp">Crear Competencia</a></li>
+          <li><a href="CrearEquipo.asp">Crear Equipo</a></li>
+         </ul>
+      </li>
+      
+      <li class="dropdown">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Competencia Nacional<b class="caret"></b></a>
+        <ul class="dropdown-menu">
+          <li><a href="Registro.asp?Comp=1">Registrar Amazona</a></li>
+          <li><a href="RegistroTiempo.asp?Comp=1">Registrar Recorrido</a></li>
+          <li><a href="RegOrden.asp?Comp=1">Ingresar Orden de Recorrido</a></li>
+          <li><a href="VerOrdenRecorrido.asp?Comp=1">Ver Orden de Recorridos</a></li>
           <li class="divider"></li>
-          <li><a href="#">Separated link</a></li>
-          <li class="divider"></li>
-          <li><a href="#">One more separated link</a></li>
+          <li><a href="TablaModal.asp?Comp=1">Recorridos por Modalidad</a></li>
+          <li><a href="TablaFecha.asp?Comp=1">Recorridos por Fecha</a></li>
+          <li><a href="ListaRecorridos.asp?Comp=1">Lista de Recorridos</a></li>
         </ul>
       </li>
+      <li class="dropdown">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Competencia Internacional<b class="caret"></b></a>
+        <ul class="dropdown-menu">
+          <li><a href="Registro.asp?Comp=2">Registrar Amazona</a></li>
+          <li><a href="RegistroTiempo.asp?Comp=2">Registrar Recorrido</a></li>
+          <li><a href="RegOrden.asp?Comp=2">Ingresar Orden de Recorrido</a></li>
+          <li><a href="VerOrdenRecorrido.asp?Comp=2">Ver Orden de Recorridos</a></li>
+          <li class="divider"></li>
+          <li><a href="TablaModal.asp?Comp=2">Recorridos por Modalidad</a></li>
+          <li><a href="TablaFecha.asp?Comp=2">Recorridos por Fecha</a></li>
+          <li><a href="ListaRecorridos.asp?Comp=2">Lista de Recorridos</a></li>
+        </ul>
+      </li>
+      <li class="dropdown">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Rankings<b class="caret"></b></a>
+        <ul class="dropdown-menu">
+          <li><a href="Ranking.asp">Ranking Oficial</a></li>
+          <li><a href="SelFecha.asp">Ranking Diario</a></li>
+          <li><a href="RankingGlobal.asp">Ranking Global</a></li>
+          <li><a href="RankingMovil.asp">Ranking Para App</a></li>
+         </ul>
+      </li>
+     
     </ul>
 
     <ul class="nav navbar-nav navbar-right">
-      <li><a href="#">Link</a></li>
-      <li class="dropdown">
-        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
-        <ul class="dropdown-menu">
-          <li><a href="#">Action</a></li>
-          <li><a href="#">Another action</a></li>
-          <li><a href="#">Something else here</a></li>
-          <li class="divider"></li>
-          <li><a href="#">Separated link</a></li>
-        </ul>
-      </li>
-    </ul>
+       <li class="active"><a href="CerrarSesion.asp"><span class="glyphicon glyphicon-log-out"></span>&nbsp;Cerrar Sesion &nbsp;&nbsp;</a></li>
+      </ul>
   </div><!-- /.navbar-collapse -->
 </nav>
 <div class="container">

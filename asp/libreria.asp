@@ -161,6 +161,9 @@ existe_sesion
           <li><a href="TablaModal.asp?Comp=1">Recorridos por Modalidad</a></li>
           <li><a href="TablaFecha.asp?Comp=1">Recorridos por Fecha</a></li>
           <li><a href="ListaRecorridos.asp?Comp=1">Lista de Recorridos</a></li>
+          <li class="divider"></li>
+          <li><a href="ListaParticipantes.asp?Comp=1">Participantes</a></li>
+          <li><a href="ListaEquipos.asp?Comp=1">Equipos Participantes</a></li>
         </ul>
       </li>
       <li class="dropdown">
@@ -174,6 +177,9 @@ existe_sesion
           <li><a href="TablaModal.asp?Comp=2">Recorridos por Modalidad</a></li>
           <li><a href="TablaFecha.asp?Comp=2">Recorridos por Fecha</a></li>
           <li><a href="ListaRecorridos.asp?Comp=2">Lista de Recorridos</a></li>
+          <li class="divider"></li>
+          <li><a href="ListaParticipantes.asp?Comp=2">Participantes</a></li>
+          <li><a href="ListaEquipos.asp?Comp=2">Equipos Participantes</a></li>
         </ul>
       </li>
       <li class="dropdown">

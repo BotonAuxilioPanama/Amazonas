@@ -70,6 +70,8 @@ for g = 0 to UBound(modalidades,2)
 					dim dia
 					dim mes 
 					dim anio
+					dim fecha1SQL
+					dim fecha2SQL
 					
 					dim limFecha
 						limFecha = UBound(fechas,2)
@@ -80,18 +82,22 @@ for g = 0 to UBound(modalidades,2)
 					    mes = MONTH(fechas(0,0))
 					    anio= YEAR(fechas(0,0))
 					    fecha1 = dia&"/"&mes&"/"&anio
+					    fecha1SQL =	mes&"/"&dia&"/"&anio
+
 
 					    dia = DAY(fechas(0,limFecha))
 					    mes = MONTH(fechas(0,limFecha))
 					    anio= YEAR(fechas(0,limFecha))
 					    fecha2 = dia&"/"&mes&"/"&anio
+					    fecha2SQL =	mes&"/"&dia&"/"&anio
+
 						
 					
 					set Con = Server.CreateObject("ADODB.CONNECTION")
 					Con.Open = STRCONEXION
 
 					Set RsAmazonas = Server.CreateObject("ADODB.RECORDSET")
-					RsAmazonas.Source = "SELECT Amazonas.idAmazona, Amazonas.Nombre, Amazonas.Apellido, Equipos.Nombre AS Equipo, sum(Recorridos.Tiempo + Recorridos.Falta) as Suma FROM Modalidad INNER JOIN ((Competencia INNER JOIN Equipos ON Competencia.idCompetencia = Equipos.idCompetencia) INNER JOIN (Amazonas INNER JOIN Recorridos ON Amazonas.idAmazona = Recorridos.idAmazona) ON Equipos.idEquipo = Amazonas.idEquipo) ON Modalidad.idModalidad = Recorridos.idModalidad WHERE (((Competencia.idCompetencia)="&comp&")) AND ( Recorridos.Fecha Between #"&fecha1&"# And #"&fecha2&"#) GROUP BY Amazonas.idAmazona, Amazonas.Nombre, Amazonas.Apellido, Equipos.Nombre, Modalidad.idModalidad HAVING (((Modalidad.idModalidad)="&idMod&")) ORDER BY Sum(Recorridos.Tiempo + Recorridos.Falta), Equipos.Nombre, Amazonas.Apellido;  "
+					RsAmazonas.Source = "SELECT Amazonas.idAmazona, Amazonas.Nombre, Amazonas.Apellido, Equipos.Nombre AS Equipo, sum(Recorridos.Tiempo + Recorridos.Falta) as Suma FROM Modalidad INNER JOIN ((Competencia INNER JOIN Equipos ON Competencia.idCompetencia = Equipos.idCompetencia) INNER JOIN (Amazonas INNER JOIN Recorridos ON Amazonas.idAmazona = Recorridos.idAmazona) ON Equipos.idEquipo = Amazonas.idEquipo) ON Modalidad.idModalidad = Recorridos.idModalidad WHERE (((Competencia.idCompetencia)="&comp&")) AND ( Recorridos.Fecha Between #"&fecha1SQL&"# And #"&fecha2SQL&"#) GROUP BY Amazonas.idAmazona, Amazonas.Nombre, Amazonas.Apellido, Equipos.Nombre, Modalidad.idModalidad HAVING (((Modalidad.idModalidad)="&idMod&")) ORDER BY Sum(Recorridos.Tiempo + Recorridos.Falta), Equipos.Nombre, Amazonas.Apellido;  "
 
 					RsAmazonas.Open, Con
 					dim Amazonas 
@@ -175,6 +181,7 @@ for g = 0 to UBound(modalidades,2)
                        	<%for recor = 1 to 2 step 1 %>
 							<%dim Recorrido
 							dim fecha
+							dim fechaSQL
 							if recor = 2 then
 							clas = "active"
 							end if 
@@ -183,8 +190,10 @@ for g = 0 to UBound(modalidades,2)
 					        anio= YEAR(fechas(0,f))
 
 					        fecha = dia&"/"&mes&"/"&anio
+					        fechaSQL =	mes&"/"&dia&"/"&anio
 
-							Recorrido = getRecorrido(Amazonas(0,n), idMod, fecha, recor) 
+
+							Recorrido = getRecorrido(Amazonas(0,n), idMod, fechaSQL, recor) 
 							if UBound(Recorrido, 2) >= 0 then%>
 
 								<td class="<%=clas%> text-center"><%=formatnumber(Recorrido(1,0),3)%> </td>

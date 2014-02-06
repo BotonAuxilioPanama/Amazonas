@@ -13,11 +13,14 @@ dim dia
 dim mes 
 dim anio
 dim fecha
+dim fechaSQL
 dia = CInt(Request.QueryString("d"))
 mes = CInt(Request.QueryString("m"))
 anio = CInt(Request.QueryString("a"))
 
 fecha = dia&"/"&mes&"/"&anio
+fechaSQL =  mes&"/"&dia&"/"&anio
+
 cabecera "Resultados Por Competencias Diarios", ""
 %>
 
@@ -30,7 +33,7 @@ cabecera "Resultados Por Competencias Diarios", ""
               <h3>Mejor Tiempo Individual</h3>
               <h3> <%=FormatDateTime(fecha,1) %></h3>
              
-                          <%MejorTiempoDia(fecha)%>
+                          <%MejorTiempoDia(fechaSQL)%>
           
 
              
@@ -49,7 +52,7 @@ cabecera "Resultados Por Competencias Diarios", ""
         <h3>Mejor Tiempo Individual</h3>
         
 
-           <%MejorTiempoDiaInter(fecha)%>
+           <%MejorTiempoDiaInter(fechaSQL)%>
 
        
      </article>

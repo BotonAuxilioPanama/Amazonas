@@ -39,7 +39,9 @@ if not RsRecorrido.EOF then
 	dim fechaOriginal '-->8
 	dim fecha 
 	dim calcfalta
-	
+	dim dia 
+  dim mes
+  dim anio
 	
 	
 	 idAmazona = Recorridos( 0,0)
@@ -93,14 +95,16 @@ if not RsRecorrido.EOF then
               </div>
 
                <div class="form-group">
-                <label for="fecha" class="col-md-2 control-label">Fecha</label>
+                <label for="fecha" class="col-md-2 control-label">Fecha dd/mm/aaaa</label>
                 <div class="col-md-6">
-                  <input type="text" class="form-control" id="fecha" name="fecha" pattern="(0[1-9]|[12][0-9]|3[01])[/]([1-9]|1[012])[/](20)\d\d"
-                  placeholder="Fecha" required value="<%=fecha%>">
+                  <input type="text" class="form-control" id="fecha" name="fecha"  placeholder="Fecha" required value="<%=fecha%>">
                 </div>
               </div> 
 
-             <!--  <div class="form-group">
+             <!--  
+              para la fecha pattern="(0[1-9]|[12][0-9]|3[01])[/](0[1-9]|1[012])[/](20)\d\d"
+
+             <div class="form-group">
                 <label for="modalidad" class="col-md-2 control-label">Modalidad</label>
                 <div class="col-md-6">
                   <select class="form-control" id="modalidad">

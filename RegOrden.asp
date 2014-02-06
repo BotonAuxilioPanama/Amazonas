@@ -30,7 +30,7 @@ set Con = Server.CreateObject("ADODB.CONNECTION")
 Con.Open = STRCONEXION
 
 Set RsCantidad = Server.CreateObject("ADODB.RECORDSET")
-RsCantidad.Source = "SELECT Count(Amazonas.idAmazona) AS Cantidad FROM (Competencia INNER JOIN Equipos ON Competencia.idCompetencia = Equipos.idCompetencia) INNER  JOIN Amazonas ON Equipos.idEquipo = Amazonas.idEquipo WHERE (((Competencia.idCompetencia)= "& comp &"));"
+RsCantidad.Source = "SELECT Count(Amazonas.idAmazona) AS Cantidad FROM (Competencia INNER JOIN Equipos ON Competencia.idCompetencia = Equipos.idCompetencia) INNER JOIN Amazonas ON Equipos.idEquipo = Amazonas.idEquipo WHERE (((Competencia.idCompetencia)= "&comp&") AND ((Amazonas.Suplente)=0));"
 
 RsCantidad.Open, Con
 

@@ -57,7 +57,36 @@ RsEquipos.Open, Con
                 placeholder="Edad" required name="edad">
               </div>
             </div>
+            
+               <div class="form-group">
+                <label for="suplente" class="col-md-2 control-label">Suplente</label>
+                <div class="col-md-6" id="suplente">
 
+                <label class="radio-inline">
+                  <input type="radio" id="suplenteNo" name="suplente" value="0" required checked=""> No
+                </label>
+                <label class="radio-inline">
+                  <input type="radio" id="suplenteSi" name="suplente" value="1" required> Sí
+                </label>
+              </div>
+                <!--
+                <div class="col-md-6">
+                  <input type="number" min="1" max ="2" class="form-control" id="recorrido" 
+                  placeholder="# de Recorrido" required>
+                </div> -->
+              </div>
+
+
+
+
+         <!--   <div class="form-group">
+              <label for="suplente" class="col-lg-2 control-label">Suplente</label>
+                <div class="col-lg-10 ">
+                <label class="checkbox">
+                <input type="checkbox" name="suplente" id ="suplente" > 
+                </label>
+                </div>
+          </div> -->
 
             <div class="form-group">
               <label for="equipo" class="col-lg-2 control-label">Equipo</label>

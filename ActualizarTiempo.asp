@@ -15,6 +15,13 @@ dim recorrido
 dim comp
 dim id
 
+dim dia 
+dim mes
+dim anio
+dim fecha2
+dim fechaSQL
+
+
 if  request.Form("tiempo") <> empty AND request.Form("faltas") <> empty AND request.Form("modalidad") <> empty  AND request.Form("recor") <> empty AND IsNumeric(request.Form("tiempo")) then
 
 id = CInt(Request.QueryString("id"))
@@ -23,6 +30,15 @@ faltas = CINT(request.Form("faltas"))
 fecha = request.Form("fecha")
 modalidad = CINT(request.Form("modalidad"))
 recorrido = CINT(request.Form("recor"))
+
+dia = DAY(fecha)
+mes = MONTH(fecha)
+anio= YEAR(fecha)
+
+fecha2 = dia&"/"&mes&"/"&anio
+fechaSQL =mes&"/"&dia&"/"&anio
+
+
 
 
 
@@ -40,7 +56,7 @@ end if
      
      Set RsAmazona = Server.CreateObject("ADODB.RECORDSET")
      Dim sql
-     sql = "Update Recorridos set  Recorridos.idModalidad = "& modalidad &" ,  Recorridos.Tiempo = "&tiempo &", Recorridos.Falta = "& faltasT &",  Recorridos.Fecha = #"& fecha &"#, Recorridos.NumRecor = "& recorrido &" WHERE Recorridos.idRecorrido = "&id&";"
+     sql = "Update Recorridos set  Recorridos.idModalidad = "& modalidad &" ,  Recorridos.Tiempo = "&tiempo &", Recorridos.Falta = "& faltasT &",  Recorridos.Fecha = #"& fechaSQL &"#, Recorridos.NumRecor = "& recorrido &" WHERE Recorridos.idRecorrido = "&id&";"
      RsAmazona.Source = sql
 
      RsAmazona.Open, Con 

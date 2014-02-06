@@ -41,9 +41,11 @@ dim cant_fechas
 cant_fechas = UBound(fechas,2)
 
 dim fechaTitu
+dim fechaSQL
 dim dia
 dim mes 
 dim anio
+dim sql
 
 
 
@@ -53,6 +55,7 @@ dia = DAY(fechas(0,g))
 mes = MONTH(fechas(0,g))
 anio= YEAR(fechas(0,g))
 fechaTitu = dia&"/"&mes&"/"&anio
+fechaSQL =	mes&"/"&dia&"/"&anio
 
 %>
 <section class="col-md-12 col-xs-12">
@@ -64,11 +67,11 @@ fechaTitu = dia&"/"&mes&"/"&anio
 					Con.Open = STRCONEXION
 
 					Set RsAmazonas = Server.CreateObject("ADODB.RECORDSET")
-					RsAmazonas.Source = "SELECT Amazonas.idAmazona, Amazonas.Nombre, Amazonas.Apellido, Equipos.Nombre AS Equipo, Sum(Recorridos.Tiempo + Recorridos.Falta) AS SumaDeTiempo FROM Modalidad INNER JOIN ((Competencia INNER JOIN Equipos ON Competencia.idCompetencia = Equipos.idCompetencia) INNER JOIN (Amazonas INNER JOIN Recorridos ON Amazonas.idAmazona = Recorridos.idAmazona) ON Equipos.idEquipo = Amazonas.idEquipo) ON Modalidad.idModalidad = Recorridos.idModalidad WHERE (((Competencia.idCompetencia)="&comp&")) GROUP BY Amazonas.idAmazona, Amazonas.Nombre, Amazonas.Apellido, Equipos.Nombre, Recorridos.Fecha HAVING (((Recorridos.Fecha)=#"&fechaTitu&"#)) ORDER BY Sum(Recorridos.Tiempo + Recorridos.Falta), Equipos.Nombre, Amazonas.Apellido;"
-
+					sql = "SELECT Amazonas.idAmazona, Amazonas.Nombre, Amazonas.Apellido, Equipos.Nombre AS Equipo, Sum(Recorridos.Tiempo + Recorridos.Falta) AS SumaDeTiempo FROM Modalidad INNER JOIN ((Competencia INNER JOIN Equipos ON Competencia.idCompetencia = Equipos.idCompetencia) INNER JOIN (Amazonas INNER JOIN Recorridos ON Amazonas.idAmazona = Recorridos.idAmazona) ON Equipos.idEquipo = Amazonas.idEquipo) ON Modalidad.idModalidad = Recorridos.idModalidad WHERE (((Competencia.idCompetencia)="&comp&")) GROUP BY Amazonas.idAmazona, Amazonas.Nombre, Amazonas.Apellido, Equipos.Nombre, Recorridos.Fecha HAVING (((Recorridos.Fecha)=#"&fechaSQL&"#)) ORDER BY Sum(Recorridos.Tiempo + Recorridos.Falta), Equipos.Nombre, Amazonas.Apellido;"
+					RsAmazonas.Source = sql
 					RsAmazonas.Open, Con
 					dim Amazonas 
-
+					%>  <!-- <h2>Fecha: <%=sql%></h2> --> <%
 					if not RsAmazonas.EOF then 
 					Amazonas = RsAmazonas.GetRows
 					RsAmazonas.Close
@@ -173,7 +176,7 @@ fechaTitu = dia&"/"&mes&"/"&anio
 							clas = "active"
 							end if 
 							
-							Recorrido = getRecorrido(Amazonas(0,n), idMod, fechaTitu, recor) 
+							Recorrido = getRecorrido(Amazonas(0,n), idMod, fechaSQL, recor) 
 							if UBound(Recorrido, 2) >= 0 then%>
 
 								<td class="<%=clas%> text-center"><%=formatnumber(Recorrido(1,0),3)%> </td>

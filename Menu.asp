@@ -7,7 +7,7 @@
 <!-- #include file = "asp/libreria.asp"-->
 <!-- #include file = "db/conectar.asp"-->
 <%
-  cabecera "Menu Principal <small>Seleccione una Opción</small>", ""
+  cabecera "Menu Principal", "<small>Seleccione una Opción</small>"
 %>
 
 

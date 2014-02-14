@@ -67,7 +67,7 @@ fechaSQL =	mes&"/"&dia&"/"&anio
 					Con.Open = STRCONEXION
 
 					Set RsAmazonas = Server.CreateObject("ADODB.RECORDSET")
-					sql = "SELECT Amazonas.idAmazona, Amazonas.Nombre, Amazonas.Apellido, Equipos.Nombre AS Equipo, Sum(Recorridos.Tiempo + Recorridos.Falta) AS SumaDeTiempo FROM Modalidad INNER JOIN ((Competencia INNER JOIN Equipos ON Competencia.idCompetencia = Equipos.idCompetencia) INNER JOIN (Amazonas INNER JOIN Recorridos ON Amazonas.idAmazona = Recorridos.idAmazona) ON Equipos.idEquipo = Amazonas.idEquipo) ON Modalidad.idModalidad = Recorridos.idModalidad WHERE (((Competencia.idCompetencia)="&comp&")) GROUP BY Amazonas.idAmazona, Amazonas.Nombre, Amazonas.Apellido, Equipos.Nombre, Recorridos.Fecha HAVING (((Recorridos.Fecha)=#"&fechaSQL&"#)) ORDER BY Sum(Recorridos.Tiempo + Recorridos.Falta), Equipos.Nombre, Amazonas.Apellido;"
+					sql = "SELECT Amazonas.idAmazona, Amazonas.Nombre, Amazonas.Apellido, Equipos.Nombre AS Equipo, Sum(Recorridos.Tiempo + Recorridos.Falta) AS SumaDeTiempo FROM Modalidad INNER JOIN ((Competencia INNER JOIN Equipos ON Competencia.idCompetencia = Equipos.idCompetencia) INNER JOIN (Amazonas INNER JOIN Recorridos ON Amazonas.idAmazona = Recorridos.idAmazona) ON Equipos.idEquipo = Amazonas.idEquipo) ON Modalidad.idModalidad = Recorridos.idModalidad WHERE (((Competencia.idCompetencia)="&comp&")) GROUP BY Amazonas.idAmazona, Amazonas.Nombre, Amazonas.Apellido, Equipos.Nombre, Recorridos.Fecha HAVING (((Recorridos.Fecha)=#"&fechaSQL&"#)) ORDER BY Amazonas.idAmazona;"
 					RsAmazonas.Source = sql
 					RsAmazonas.Open, Con
 					dim Amazonas 

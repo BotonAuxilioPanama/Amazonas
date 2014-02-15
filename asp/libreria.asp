@@ -254,13 +254,13 @@ Else%>
 end Function
 <!-- Almacenar Orden de Amazonas--------------------------------------------------------------------------------------------->
 
-Function guardarOrden(idAmazona, pos)
+Function guardarOrden(idAmazona, pos, modal)
  set Con = Server.CreateObject("ADODB.CONNECTION")
      Con.Open = STRCONEXION
      
      Set RsAmazona = Server.CreateObject("ADODB.RECORDSET")
      
-     RsAmazona.Source = "Insert Into Orden ( idAmazona  ,  Posicion ) Values ("& idAmazona &", "& pos &");"
+     RsAmazona.Source = "Insert Into Orden ( idAmazona  ,  Posicion, idModalidad ) Values ("& idAmazona &", "& pos &" , "& modal &");"
 
       RsAmazona.Open, Con 
 

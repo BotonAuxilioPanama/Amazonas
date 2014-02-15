@@ -48,7 +48,16 @@ end if
 
        <section class="col-md-12">
         <form class="form-horizontal col-md-10 col-md-offset-2" role="form" method="post" action="GuardarOrdenRecorrido.asp?cant=<%=cantidad%>&Comp=<%=comp%>">
-
+            
+             <div class="form-group">
+                <label for="modalidad" class="col-md-2 control-label">Modalidad</label>
+                <div class="col-md-6">
+                  <select class="form-control" id="modalidad" name="modalidad">
+                    <option value ="1">Polos</option>
+                    <option value ="2">Barriles</option>
+                  </select>
+                </div>
+              </div>
             
             <% 
            

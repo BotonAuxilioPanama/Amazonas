@@ -56,7 +56,7 @@ cabecera "Lista de Participantes", paginaTit
 			<tr class="label-success">
 					<th class="text-center">#</th>
 					<th class="text-center">Amazona</th>
-					<th class="text-center">Edad</th>
+					
 			</tr>
 			<%dim clas
 			for k = 0 to UBound(Amazonas,2) step 1
@@ -70,7 +70,7 @@ cabecera "Lista de Participantes", paginaTit
 			<tr>
 				<td class="<%=clas%> text-center"><%=k + 1%></td>
 				<td class="<%=clas%>"><%=Amazonas(0,k)&" "&Amazonas(1,k)%></td>
-				<td class="<%=clas%> text-center"><%=Amazonas(2,k)%></td>
+				
 				
 			</tr>
             <%next%>

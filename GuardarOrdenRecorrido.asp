@@ -7,10 +7,11 @@
 
 <%
 dim cant
-cant = INT(request.QueryString("cant"))
+cant = CINT(request.QueryString("cant"))
 dim comp
 comp = CInt(Request.QueryString("Comp"))
-
+dim modal
+modal = CINT(request.Form("modalidad"))
 
 dim arrselect()
 redim arrselect(cant)
@@ -53,7 +54,7 @@ next
 
 if centinela = 0 then 
 	for g = 1 to cant step 1
-		guardarOrden id(g),g
+		guardarOrden id(g),g, modal
 	next
 
 	response.redirect("PagResultado.asp?res=1&Op=3&Comp="&comp ) 
